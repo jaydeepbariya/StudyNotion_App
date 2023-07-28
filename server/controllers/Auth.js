@@ -13,7 +13,7 @@ exports.sendOTP = async (req, res) => {
     const user = await User.findOne({ email: email });
 
     if (user) {
-      return res.status(401).json({
+      return res.status(500).json({
         success: false,
         message: "User Already Exists",
       });
@@ -47,7 +47,7 @@ exports.sendOTP = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "OTP Sent Successfully",
-      OTP : otpSaved.otp
+      otp : otpSaved.otp
     });
 
   } catch (error) {
@@ -66,7 +66,7 @@ exports.signup = async (req,res) => {
         const {firstName, lastName, email, password, confirmPassword, accountType, otp} = req.body;
         //validate all fields
         if(!firstName || !lastName || !email || !password || !confirmPassword || !otp){
-            return res.status(403).json({
+            return res.status(400).json({
                 success : false,
                 message : "All Fields Required"
             });
@@ -91,6 +91,8 @@ exports.signup = async (req,res) => {
         }
         //find recent OTP
         const recentOTP = await OTP.findOne({email : email}).sort({createdAt:-1}).limit(1);
+
+        console.log("Recent OTP...", recentOTP);
 
         //validate OTP
         if(recentOTP.otp.length == 0){

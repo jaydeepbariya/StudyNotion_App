@@ -7,6 +7,7 @@ const {
   sendOTP,
   changePassword,
 } = require("../controllers/Auth")
+const { getUserDetails } = require("../controllers/Profile")
 const {
   resetPasswordToken,
   resetPassword,
@@ -28,5 +29,7 @@ router.post("/changepassword", auth, changePassword)
 router.post("/reset-password-token", resetPasswordToken)
 
 router.post("/reset-password", resetPassword)
+
+router.get("/user-details", getUserDetails)
 
 module.exports = router

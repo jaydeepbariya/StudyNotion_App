@@ -157,3 +157,30 @@ exports.getEnrolledCourses = async (req, res) => {
       })
     }
 };
+
+exports.getUserDetails = async (req,res)=>{
+  try{
+
+    const {id} = req.user;
+
+     const userData = await User.findById(id);
+
+     if(!userData){
+        return res.status(400).json({
+          success : false,
+          message : "Not a User"
+        })
+     }
+
+     return res.status(200).json({
+      success : true,
+      message : "User Details",
+      userData
+      })
+  }catch(error){
+    return res.status(500).json({
+      success : false,
+      message : error.message
+    })
+  }
+}

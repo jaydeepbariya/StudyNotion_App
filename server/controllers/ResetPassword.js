@@ -89,7 +89,7 @@ exports.resetPassword = async (req,res) => {
 
     }catch(error){
         console.log("Password reset ",error.message);
-        return res.status(400).json({
+        return res.status(500).json({
             success : false,
             message : "Password Update Error, Try Again"
         });
