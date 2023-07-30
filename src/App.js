@@ -18,6 +18,7 @@ import MyProfile from "./components/dashboard/MyProfile";
 import EnrolledCourses from './components/dashboard/EnrolledCourses';
 import PurchaseHistory from './components/dashboard/PurchaseHistory';
 import Settings from './components/dashboard/Settings';
+import AddCourse from "./components/dashboard/AddCourse";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path={"/dashboard/enrolled-courses"} element={<EnrolledCourses />} />
           <Route path={"/dashboard/purchase-history"} element={<PurchaseHistory />} />
           <Route path={"/dashboard/settings"} element={<Settings />} />
+          <Route path={"/dashboard/add-course"} element={<AddCourse />} />
         </Route>
 
         <Route path={"*"} element={<NotFound />} />
