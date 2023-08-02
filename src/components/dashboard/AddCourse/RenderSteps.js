@@ -2,8 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { MdOutlineDone } from 'react-icons/md';
 import CourseInformationForm from './CourseInformationForm';
-import CourseBuilderForm from './CourseBuilderForm';
-import PublishCourse from './PublishCourse';
+import CourseBuilderForm from '../AddCourse/CourseBuilder/CourseBuilderForm';
+import PublishCourse from './PublishCourse/PublishCourse';
 
 
 const RenderSteps = () => {
@@ -45,7 +45,7 @@ const RenderSteps = () => {
 
           {step === 1 && <CourseInformationForm />}
           {step === 2 && <CourseBuilderForm />}
-          {/* {step === 3 && <PublishCourse />} */}
+          {step === 3 && <PublishCourse />}
           
     </div>
       </div>

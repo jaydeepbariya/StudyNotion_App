@@ -1,6 +1,6 @@
-import { toast } from "react-hot-toast"
-import { apiConnector } from "../apiConnector"
-import { course } from "../apis"
+import { toast } from "react-hot-toast";
+import { apiConnector } from "../apiConnector";
+import { course } from "../apis";
 
 const {
   COURSE_DETAILS_API,
@@ -81,6 +81,9 @@ export const fetchCourseCategories = async () => {
 
 // add the course details
 export const addCourseDetails = async (data, token) => {
+
+  console.log("Course create data...", data);
+
   let result = null
   const toastId = toast.loading("Loading...")
   try {
@@ -110,14 +113,14 @@ export const editCourseDetails = async (data, token) => {
   try {
     const response = await apiConnector("POST", EDIT_COURSE_API, data, {
       "Content-Type": "multipart/form-data",
-      Authorisation: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     })
     console.log("EDIT COURSE API RESPONSE............", response)
     if (!response?.data?.success) {
       throw new Error("Could Not Update Course Details")
     }
     toast.success("Course Details Updated Successfully")
-    result = response?.data?.data
+    result = response?.data?.course
   } catch (error) {
     console.log("EDIT COURSE API ERROR............", error)
     toast.error(error.message)
@@ -227,7 +230,7 @@ export const deleteSection = async (data, token) => {
       throw new Error("Could Not Delete Section")
     }
     toast.success("Course Section Deleted")
-    result = response?.data?.data
+    result = response?.data?.course
   } catch (error) {
     console.log("DELETE SECTION API ERROR............", error)
     toast.error(error.message)
@@ -312,7 +315,7 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
       "POST",
       GET_FULL_COURSE_DETAILS_AUTHENTICATED,
       {
-        courseId,
+        courseId : courseId,
       },
       {
         Authorization: `Bearer ${token}`,
