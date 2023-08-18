@@ -34,12 +34,5 @@ export const sidebarLinks = [
     path: "/dashboard/enrolled-courses",
     type: USER_ROLES.STUDENT,
     icon: "VscMortarBoard",
-  },
-  {
-    id: 6,
-    name: "Purchase History",
-    path: "/dashboard/purchase-history",
-    type: USER_ROLES.STUDENT,
-    icon: "VscHistory",
-  },
+  }
 ];

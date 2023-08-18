@@ -22,6 +22,7 @@ export const profile = {
   UPDATE_PROFILE_API: BASE_URL + "/profile/updateProfile",
   CHANGE_PASSWORD_API: BASE_URL + "/auth/changepassword",
   DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
+  GET_USER_ENROLLED_COURSES_API: BASE_URL + "/profile/getEnrolledCourses",
 
 
 };

@@ -23,7 +23,8 @@ import MyCourse from "./components/dashboard/MyCourses/MyCourse";
 import EditCourse from "./components/dashboard/EditCourse/EditCourse";
 import Catalog from "./components/catalog/Catalog";
 import CourseDetail from "./pages/CourseDetail";
-
+import ViewCourse from "./pages/ViewCourse";
+import VideoDetails from './components/viewCourse/VideoDetails';
 function App() {
   return (
     <div className="w-[100vw] min-h-[100vh] overflow-x-hidden overflow-y-auto bg-richblack-800 text-richblack-100">
@@ -53,9 +54,12 @@ function App() {
           <Route path={"/dashboard/add-course"} element={<AddCourse />} />
           <Route path={"/dashboard/my-courses"} element={<MyCourse />} />
           <Route path={"/dashboard/edit-course/:courseId"} element={<EditCourse />} />
-
-
         </Route>
+
+        <Route path="/view-course" element={<ViewCourse />}>
+          <Route path="/view-course/:courseId/section/:sectionId/sub-section/:subSectionId" element={<VideoDetails />} />
+        </Route>
+
 
         <Route path={"*"} element={<NotFound />} />
       </Routes>

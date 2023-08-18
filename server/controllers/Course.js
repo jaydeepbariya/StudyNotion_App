@@ -184,7 +184,7 @@ exports.editCourse = async (req, res) => {
       .populate({
         path: "courseContent",
         populate: {
-          path: "subSection",
+          path: "subSection"
         },
       })
       .exec()
@@ -315,6 +315,7 @@ exports.getFullCourseDetails = async (req, res) => {
         path: "courseContent",
         populate: {
           path: "subSection",
+          model : "SubSection"
         },
       })
       .exec()

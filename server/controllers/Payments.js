@@ -4,6 +4,7 @@ const mailSender = require("../utils/MailSender");
 const { courseEnrollmentEmail } = require("../mail/templates/courseEnrollmentEmail");
 const mongoose = require("mongoose");
 const Razorpay = require('razorpay');
+const crypto = require('crypto');
 require('dotenv').config();
 
 exports.capturePayment = async (req, res) => {
@@ -59,11 +60,11 @@ exports.capturePayment = async (req, res) => {
   };
 
   try {
-    const paymentResponse = instance.orders.create(options);
+    const paymentResponse = await instance.orders.create(options);
 
     return res.json({
       success: true,
-      message: paymentResponse
+      paymentResponse
     });
 
   } catch (error) {
@@ -178,12 +179,7 @@ exports.sendPaymentSuccessEmail = async (req, res) => {
     const emailResponse = await mailSender(
       enrolledStudent.email,
       "Payment Received - StudyNotion",
-      paymentSuccessEmail(
-        `${enrolledStudent.firstName} ${enrolledStudent.lastName}`,
-        amount / 100,
-        orderId,
-        paymentId
-      )
+        `${enrolledStudent.firstName} ${enrolledStudent.lastName} Amount : ${amount / 100} Order Id : ${orderId} Payment Id : ${paymentId}`
     );
     console.log(emailResponse);
   } catch (error) {
