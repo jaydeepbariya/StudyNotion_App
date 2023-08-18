@@ -15,6 +15,7 @@ const {
   showAllCategories,
   createCategory,
   categoryPageDetails,
+  getCoursesByCategoryId,
 } = require("../controllers/Category");
 
 const {
@@ -59,6 +60,7 @@ router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses);
 router.post("/createCategory", auth, isInstructor, createCategory);
 router.get("/showAllCategories", showAllCategories);
 router.post("/getCategoryPageDetails", categoryPageDetails);
+router.get("/getCoursesByCategory/:categoryId", getCoursesByCategoryId);
 
 router.post("/createRating", auth, createRating);
 router.get("/getAverageRating", getAverageRating);

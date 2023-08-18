@@ -109,3 +109,48 @@ exports.categoryPageDetails = async (req, res) => {
     });
   }
 };
+
+
+exports.getCoursesByCategoryId = async (req,res)=>{
+  
+  const {categoryId} = req.params;
+  
+  if(!categoryId){
+    return res.status(400).json({
+      success : false,
+      message : "categoryId required"
+    });
+  }
+
+  try{
+    const response = await Category.findById(categoryId).populate({
+      path : "courses",
+      populate : {
+        path : "ratingAndReviews",
+        model : "RatingAndReview"
+      },
+      populate: {
+        path: 'instructor',
+        model: 'User'
+      },
+      
+    }).exec();
+    
+    const result = response.courses;
+
+    return res.status(200).json({
+      success : true,
+      message : `Courses of Category ${response.name}`,
+      courses : result,
+      name : response.name,
+      description : response.description
+    });
+
+  }catch(error){
+    console.log(error);
+    return res.status(500).json({
+      success : false,
+      message : error.message
+    })
+    }
+}

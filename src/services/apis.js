@@ -2,6 +2,7 @@ const BASE_URL = "http://localhost:4000/api/v1";
 
 export const categories = {
   CATEGORIES_API: BASE_URL + "/course/showAllCategories",
+  COURSES_BY_CATEGORY_ID : BASE_URL + "/course/getCoursesByCategory/"
 };
 
 export const auth = {
@@ -47,6 +48,17 @@ export const course = {
     BASE_URL + "/course/getFullCourseDetails",
   LECTURE_COMPLETION_API: BASE_URL + "/course/updateCourseProgress",
   CREATE_RATING_API: BASE_URL + "/course/createRating",
+}
+
+export const catalog = {
+  CATALOG_PAGE_DATA : BASE_URL+"/course/getCatagoryPageDetails"
+}
+
+export const payment = {
+  COURSE_PAYMENT_API : BASE_URL+"/payment/capturePayment",
+  COURSE_VERIFY_API : BASE_URL + "/payment/verifySignature",
+  PAYMENT_SUCCESS_EMAIL : BASE_URL + "/payment/sendPaymentSuccessEmail",
+  PAYMENT_BYPASS : BASE_URL + "/payment/paymentByPass"
 }
 
 

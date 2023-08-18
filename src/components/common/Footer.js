@@ -79,7 +79,7 @@ const Footer = () => {
                             {
                                 FooterLink2[0].links.map((link,index)=>{
                                     return (
-                                        <li className='hover:text-richblack-300'><Link to={link.link}></Link>{link.title}</li>
+                                        <li className='hover:text-richblack-300' key={index} ><Link to={link.link}></Link>{link.title}</li>
                                     )
                                 })
                             }
@@ -91,7 +91,7 @@ const Footer = () => {
                             {
                                 FooterLink2[1].links.map((link,index)=>{
                                     return (
-                                        <li className='hover:text-richblack-300'><Link to={link.link}></Link>{link.title}</li>
+                                        <li className='hover:text-richblack-300' key={index} ><Link to={link.link}></Link>{link.title}</li>
                                     )
                                 })
                             }
@@ -103,7 +103,7 @@ const Footer = () => {
                             {
                                 FooterLink2[2].links.map((link,index)=>{
                                     return (
-                                        <li className='hover:text-richblack-300'><Link to={link.link}></Link>{link.title}</li>
+                                        <li className='hover:text-richblack-300' key={index} ><Link to={link.link}></Link>{link.title}</li>
                                     )
                                 })
                             }

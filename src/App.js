@@ -21,6 +21,8 @@ import Settings from './components/dashboard/Settings';
 import AddCourse from "./components/dashboard/AddCourse";
 import MyCourse from "./components/dashboard/MyCourses/MyCourse";
 import EditCourse from "./components/dashboard/EditCourse/EditCourse";
+import Catalog from "./components/catalog/Catalog";
+import CourseDetail from "./pages/CourseDetail";
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
         <Route path={"/reset-complete"} element={<ResetComplete />} />
         <Route path={"/about"} element={<About />} />
         <Route path={"/contact"} element={<Contact />} />
+        <Route path={"/catalog/:categoryId"} element={<Catalog />} />
+        <Route path={"/courses/:courseId"} element={<CourseDetail />} />
 
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path={"/dashboard/my-profile"} element={<MyProfile />} />
