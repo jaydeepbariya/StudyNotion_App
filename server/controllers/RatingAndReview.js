@@ -85,30 +85,21 @@ exports.getAverageRating = async (req,res)=>{
 
 exports.getAllRating = async (req,res)=>{
     try{
-        const {courseId} = req.body;
 
-        if(!courseId){
-            return res.status(500).json({
-                success : false,
-                message : "CourseId Required"
-            });
-        }
 
-        const course = await Course.findById(courseId).populate("ratingAndReviews").exec();
-
-        if(!course){
-            return res.status(500).json({
-                success : false,
-                message : "No Course Found"
-            });
-        }
-
-        const allRatingCourse = course.ratingAndReviews;
+        const allReviews = await RatingAndReview.find({})
+            .sort({ rating: "desc" })
+            .populate({
+                path: "user",
+                select: "firstName lastName email image"
+            })
+            .exec();
+    
 
         return res.status(200).json({
             success : true,
-            message : 'Course Rating Found Successfully',
-            courseRatings : allRatingCourse
+            message : 'All Ratings Found Successfully',
+            data : allReviews
         });
     }
     catch(error){

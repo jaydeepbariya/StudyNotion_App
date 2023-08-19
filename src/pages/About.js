@@ -1,5 +1,6 @@
 import React from "react";
 import ContactForm from "../components/reusable/ContactForm";
+import ReviewSlider from "../components/common/ReviewSlider";
 
 const About = () => {
   return (
@@ -11,6 +12,8 @@ const About = () => {
         Fill this form and be in touch with us.
       </p>
       <ContactForm />
+
+      <ReviewSlider />
     </div>
   );
 };

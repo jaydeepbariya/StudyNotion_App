@@ -2,6 +2,7 @@ const { default: mongoose } = require('mongoose');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
 const { fileUploader } = require('../utils/fileUploader');
+const Course = require('../models/Course');
 
 exports.updateProfile = async (req,res) =>{
     try{
@@ -78,9 +79,6 @@ exports.deleteProfile = async (req,res) => {
     }
 }
 
-
-//HW : Delete Courses of Particular User Before Deleting the User Itself
-//HW : Crone Job Scheduling to Delete Account After Some Time
 
 exports.getAllUserDetails = async (req,res) => {
     try{
@@ -192,6 +190,41 @@ exports.getUserDetails = async (req,res)=>{
     return res.status(500).json({
       success : false,
       message : error.message
+    })
+  }
+}
+
+exports.instructorDashboard = async (req, res) => {
+
+  const { id } = req.user;
+
+  try {
+    const courseDetails = await Course.find({ instructor: id });
+    
+    let totalStudentsEnrolled = 0;
+    let totalAmountGenerated = 0;
+    const courseData = courseDetails.map((course)=>{
+      totalStudentsEnrolled = course?.studentsEnrolled?.length;
+      totalAmountGenerated = totalStudentsEnrolled * course.price;
+
+      const courseDataWithStats = {
+        _id: course._id,
+        courseName: course.courseName,
+        courseDescription: course.courseDescription,
+        totalStudentsEnrolled, 
+        totalAmountGenerated
+      }
+      
+      return res.status(200).json({
+        success: true,
+        courses : courseDataWithStats
+      })
+    })
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: error.message
     })
   }
 }

@@ -25,6 +25,7 @@ import Catalog from "./components/catalog/Catalog";
 import CourseDetail from "./pages/CourseDetail";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from './components/viewCourse/VideoDetails';
+import InstructorDashboard from "./pages/InstructorDashboard";
 function App() {
   return (
     <div className="w-[100vw] min-h-[100vh] overflow-x-hidden overflow-y-auto bg-richblack-800 text-richblack-100">
@@ -54,6 +55,7 @@ function App() {
           <Route path={"/dashboard/add-course"} element={<AddCourse />} />
           <Route path={"/dashboard/my-courses"} element={<MyCourse />} />
           <Route path={"/dashboard/edit-course/:courseId"} element={<EditCourse />} />
+          <Route path={"/dashboard/instructor"} element={<InstructorDashboard />} />
         </Route>
 
         <Route path="/view-course" element={<ViewCourse />}>

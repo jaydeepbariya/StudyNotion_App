@@ -12,6 +12,7 @@ import compareWithOthers from "../assets/Images/Compare_with_others.png";
 import planYourLessons from "../assets/Images/Plan_your_lessons.png";
 import instructorImg from "../assets/Images/Instructor.png";
 import Footer from "../components/common/Footer";
+import ReviewSlider from "../components/common/ReviewSlider";
 
 const Home = () => {
   return (
@@ -185,6 +186,8 @@ const Home = () => {
           />
         </div>
       </div>
+
+      <ReviewSlider />
 
     </div>
   );

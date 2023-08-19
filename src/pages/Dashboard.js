@@ -8,8 +8,6 @@ const Dashboard = () => {
   const { loading: authLoading } = useSelector((state) => state.auth);
   const { loading: profileLoading } = useSelector((state) => state.profile);
 
-  console.log(authLoading, "  ", profileLoading);
-
   if (profileLoading || authLoading) {
     return (
       <div className="w-[100%] min-h-screen flex justify-center items-center">

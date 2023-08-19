@@ -245,7 +245,6 @@ export const deleteSubSection = async (data, token) => {
 // fetching all courses under a specific instructor
 export const fetchInstructorCourses = async (token) => {
   let result = []
-  const toastId = toast.loading("Loading...")
   try {
     const response = await apiConnector(
       "GET",
@@ -264,7 +263,6 @@ export const fetchInstructorCourses = async (token) => {
     console.log("INSTRUCTOR COURSES API ERROR............", error)
     toast.error(error.message)
   }
-  toast.dismiss(toastId)
   return result
 }
 
@@ -290,7 +288,6 @@ export const deleteCourse = async (data, token) => {
 // get full details of a course
 export const getFullDetailsOfCourse = async (courseId, token) => {
   const toastId = toast.loading("Loading...")
-  //   dispatch(setLoading(true));
   let result = null
   try {
     const response = await apiConnector(
@@ -312,17 +309,15 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
   } catch (error) {
     console.log("COURSE_FULL_DETAILS_API API ERROR............", error)
     result = error.response.data
-    // toast.error(error.response.data.message);
   }
   toast.dismiss(toastId)
-  //   dispatch(setLoading(false));
   return result
 }
 
 // mark a lecture as complete
 export const markLectureAsComplete = async (data, token) => {
   let result = null
-  console.log("mark complete data", data)
+  console.log(data);
   const toastId = toast.loading("Loading...")
   try {
     const response = await apiConnector("POST", course.LECTURE_COMPLETION_API, data, {

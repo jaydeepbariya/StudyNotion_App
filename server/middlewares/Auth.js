@@ -25,7 +25,6 @@ exports.auth = async (req,res,next) =>{
         }
 
         req.user = decode;
-
         next();
     }
     catch(error){
@@ -39,16 +38,17 @@ exports.auth = async (req,res,next) =>{
 }
 
 //isInstructor
-exports.isInstructor = async (req,res,next) => {
+exports.isInstructor = async (req, res, next) => {
     try{
-    if(req.user.accountType != "Instructor") {
+    if(req?.user?.accountType !== "Instructor") {
         return res.status(400).json({
             success : false,
             message : "This is Protected Route for Instructor Role"
         })
+        next();
     }
-    next();
-    }catch(error) {
+
+    } catch (error) {
         return res.status(400).json({
             success : false,
             message : "Error In Instructor Role Validation, Please Try Again"
@@ -60,7 +60,7 @@ exports.isInstructor = async (req,res,next) => {
 //isInstructor
 exports.isStudent = async (req,res,next) => {
     try{
-    if(req.user.accountType != "Student") {
+    if(req.user.accountType !== "Student") {
         return res.status(400).json({
             success : false,
             message : "This is Protected Route for Student Role"

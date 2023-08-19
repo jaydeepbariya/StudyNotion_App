@@ -23,7 +23,7 @@ export const profile = {
   CHANGE_PASSWORD_API: BASE_URL + "/auth/changepassword",
   DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
   GET_USER_ENROLLED_COURSES_API: BASE_URL + "/profile/getEnrolledCourses",
-
+  GET_INSTRUCTOR_DATA_API : BASE_URL + "/profile/instructorDashboard"
 
 };
 
@@ -49,6 +49,7 @@ export const course = {
     BASE_URL + "/course/getFullCourseDetails",
   LECTURE_COMPLETION_API: BASE_URL + "/course/updateCourseProgress",
   CREATE_RATING_API: BASE_URL + "/course/createRating",
+  GET_ALL_RATING : BASE_URL + "/course/getReviews"
 }
 
 export const catalog = {
@@ -59,7 +60,10 @@ export const payment = {
   COURSE_PAYMENT_API : BASE_URL+"/payment/capturePayment",
   COURSE_VERIFY_API : BASE_URL + "/payment/verifySignature",
   PAYMENT_SUCCESS_EMAIL : BASE_URL + "/payment/sendPaymentSuccessEmail",
-  PAYMENT_BYPASS : BASE_URL + "/payment/paymentByPass"
+}
+
+export const ratingAndReviews = {
+  REVIEWS_DETAILS_API: BASE_URL + "/course/getReviews",
 }
 
 

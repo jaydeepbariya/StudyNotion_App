@@ -10,44 +10,39 @@ import VideoDetailsSidebar from "../components/viewCourse/VideoDetailsSidebar";
 
 const ViewCourse = () => {
   const [reviewModal, setReviewModal] = useState(false);
-    const { courseId } = useParams();
-    const { token } = useSelector((state) => state.auth);
+    const {courseId} = useParams();
+    const {token} = useSelector((state)=>state.auth);
     const dispatch = useDispatch();
 
-
-    const setCourseSpecificDetails = async () => {
-        const courseDetails = await getFullDetailsOfCourse(courseId, token);
-        dispatch(setCourseSectionData(courseDetails.courseContent));
-        dispatch(setEntireCourseData(courseDetails.courseDetails));
-        dispatch(setCompletedLectures(courseDetails.completedVideos));
-
-        let lectures = 0;
-
-        courseDetails?.courseDetails?.courseContent?.forEach((sec) => {
-            lectures += sec.subSection.length;
-        })
-
-        dispatch(setTotalNoOfLectures(lectures));
-    }
-
-    useEffect(() => {
+    useEffect(()=> {
+        const setCourseSpecificDetails = async() => {
+              const courseData = await getFullDetailsOfCourse(courseId, token);
+              dispatch(setCourseSectionData(courseData?.courseDetails?.courseContent));
+              dispatch(setEntireCourseData(courseData.courseDetails));
+              dispatch(setCompletedLectures(courseData.completedVideos));
+              let lectures = 0;
+              courseData?.courseDetails?.courseContent?.forEach((sec) => {
+                lectures += sec.subSection.length
+              })  
+              dispatch(setTotalNoOfLectures(lectures));
+        }
         setCourseSpecificDetails();
-    }, []);
-  return (
-    <>
-      <div>
-        <div>
-          <VideoDetailsSidebar setReviewModal={setReviewModal} />
-        </div>
+    },[]);
 
-        <div>
-          <Outlet />
+
+  return (
+    <div className="w-11/12 min-h-screen mx-auto ">
+        <div className="flex justify-between items-center gap-x-5">
+            <VideoDetailsSidebar setReviewModal={setReviewModal} />
+            <div className="w-[80%] my-4">
+                <Outlet />
         </div>
-      </div>
-      
-     {reviewModal && <CourseReviewModal setReviewModal={setReviewModal} />}
-    </>
-  );
+        {reviewModal && (<CourseReviewModal setReviewModal={setReviewModal} />)}
+
+        </div>
+    </div>
+  )
+
 };
 
 export default ViewCourse;
