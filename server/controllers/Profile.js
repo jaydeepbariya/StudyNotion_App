@@ -193,38 +193,30 @@ exports.getUserDetails = async (req,res)=>{
     })
   }
 }
-
 exports.instructorDashboard = async (req, res) => {
-
-  const { id } = req.user;
-
   try {
-    const courseDetails = await Course.find({ instructor: id });
-    
-    let totalStudentsEnrolled = 0;
-    let totalAmountGenerated = 0;
-    const courseData = courseDetails.map((course)=>{
-      totalStudentsEnrolled = course?.studentsEnrolled?.length;
-      totalAmountGenerated = totalStudentsEnrolled * course.price;
+    const courseDetails = await Course.find({ instructor: req.user.id })
 
+    const courseData = courseDetails.map((course) => {
+      const totalStudentsEnrolled = course.studentsEnrolled.length
+      const totalAmountGenerated = totalStudentsEnrolled * course.price
+
+      // Create a new object with the additional fields
       const courseDataWithStats = {
         _id: course._id,
         courseName: course.courseName,
         courseDescription: course.courseDescription,
-        totalStudentsEnrolled, 
-        totalAmountGenerated
+        // Include other course properties as needed
+        totalStudentsEnrolled,
+        totalAmountGenerated,
       }
-      
-      return res.status(200).json({
-        success: true,
-        courses : courseDataWithStats
-      })
+
+      return courseDataWithStats
     })
+
+    res.status(200).json({ courses: courseData })
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      success: false,
-      message: error.message
-    })
+    console.error(error)
+    res.status(500).json({ message: "Server Error" })
   }
 }

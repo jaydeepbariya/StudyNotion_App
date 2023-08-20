@@ -30,7 +30,7 @@ export default function EnrolledCourses() {
     <div className="w-11/12 min-h-screen flex flex-col items-center">
       <div className="text-3xl text-richblack-50">Enrolled Courses</div>
       {!enrolledCourses ? (
-        <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+        <div className="grid place-items-center">
           <div className="spinner"></div>
         </div>
       ) : !enrolledCourses.length ? (
@@ -39,7 +39,7 @@ export default function EnrolledCourses() {
           {/* TODO: Modify this Empty State */}
         </p>
       ) : (
-        <div className="my-8 text-richblack-5">
+        <div className="w-full my-8 text-richblack-5">
           {/* Headings */}
           <div className="flex rounded-t-lg bg-richblack-500 ">
             <p className="w-[45%] px-5 py-3">Course Name</p>

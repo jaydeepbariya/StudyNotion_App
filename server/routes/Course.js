@@ -43,9 +43,8 @@ const {
 const {
   auth,
   isInstructor,
-  isStudent,
-  isAdmin,
-} = require("../middlewares/auth");
+  isStudent
+} = require("../middlewares/Auth");
 
 router.post("/createCourse", auth, isInstructor, createCourse);
 router.post("/editCourse", auth, isInstructor, editCourse);

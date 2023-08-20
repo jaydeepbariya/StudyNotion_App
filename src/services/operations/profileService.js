@@ -80,7 +80,7 @@ export async function getInstructorData(token){
 
     console.log("GET INSTRUCTOR DATA API RESPONSE....", response);
 
-    result = response?.data?.courses;
+    result = response?.data?.courses
     toast.dismiss(toastId);
   } catch (error) {
     console.log("GET INSTRUCTOR DATA API ERROR....", error);

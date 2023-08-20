@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+const User = require('../models/User');
 //auth
 exports.auth = async (req,res,next) =>{
     try{
@@ -39,58 +39,45 @@ exports.auth = async (req,res,next) =>{
 
 //isInstructor
 exports.isInstructor = async (req, res, next) => {
-    try{
-    if(req?.user?.accountType !== "Instructor") {
-        return res.status(400).json({
-            success : false,
-            message : "This is Protected Route for Instructor Role"
-        })
-        next();
-    }
+	try {
+		const userDetails = await User.findOne({ email: req.user.email });
+		console.log(userDetails);
 
-    } catch (error) {
-        return res.status(400).json({
-            success : false,
-            message : "Error In Instructor Role Validation, Please Try Again"
-        });
-    }
+		console.log(userDetails.accountType);
 
-}
+		if (userDetails.accountType !== "Instructor") {
+			return res.status(401).json({
+				success: false,
+				message: "This is a Protected Route for Instructor",
+			});
+		}
+		next();
+	} catch (error) {
+		return res
+			.status(500)
+			.json({ success: false, message: `User Role Can't be Verified` });
+	}
+};
+
 
 //isInstructor
-exports.isStudent = async (req,res,next) => {
-    try{
-    if(req.user.accountType !== "Student") {
-        return res.status(400).json({
-            success : false,
-            message : "This is Protected Route for Student Role"
-        })
-        next();
-    }
-    }catch(error) {
-        return res.status(400).json({
-            success : false,
-            message : "Error In Student Role Validation, Please Try Again"
-        });
-    }
+exports.isStudent = async (req, res, next) => {
+	try {
+		const userDetails = await User.findOne({ email: req.user.email });
 
-}
+        console.log(userDetails);
 
-//isAdmin
-exports.isAdmin = async (req,res,next) => {
-    try{
-    if(req.user.accountType != "Admin") {
-        return res.status(400).json({
-            success : false,
-            message : "This is Protected Route for Admin Role"
-        })
-    }
-    next();
-    }catch(error) {
-        return res.status(400).json({
-            success : false,
-            message : "Error In Admin Role Validation, Please Try Again"
-        });
-    }
+		if (userDetails.accountType !== "Student") {
+			return res.status(401).json({
+				success: false,
+				message: "This is a Protected Route for Students",
+			});
+		}
+		next();
+	} catch (error) {
+		return res
+			.status(500)
+			.json({ success: false, message: `User Role Can't be Verified` });
+	}
+};
 
-}
