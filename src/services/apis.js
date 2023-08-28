@@ -1,4 +1,4 @@
-const BASE_URL = "https://backend-studynotion-mn3b.onrender.com/api/v1";
+const BASE_URL = process.env.BASE_URL
 
 export const categories = {
   CATEGORIES_API: BASE_URL + "/course/showAllCategories",
