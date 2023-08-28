@@ -37,8 +37,8 @@ const UpdateProfilePicture = () => {
   
     return (
       <div className='w-[100%] mx-auto flex flex-col my-12'>
-        <div className='w-[50%] mx-auto flex justify-center items-center gap-x-6 bg-richblack-700 p-4 round'>
-        <img src={user.image} className="w-[80px] h-[80px] rounded-full object-cover"/>
+        <div className='w-[50%] max-md:w-full max-md:gap-y-6 mx-auto max-md:flex-col flex justify-center items-center gap-x-6 bg-richblack-700 p-4 round'>
+        <img src={user.image} className="w-[80px] h-[80px] rounded-full object-cover" alt='display pic' />
           <input type="file" name="file" onChange={(e)=>handleImage(e)}/>
           <button onClick={()=>updateProfilePicture()} className="px-2 py-1 rounded-lg bg-yellow-300 text-black hover:scale-95 active:shadow-sm active:shadow-white">Submit</button>
         </div>

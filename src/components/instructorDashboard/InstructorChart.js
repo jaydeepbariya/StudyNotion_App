@@ -50,9 +50,8 @@ const InstructorChart = ({courses}) => {
   }
 
   return (
-    <div className="flex flex-1 flex-col rounded-md bg-richblack-800 p-2">
+    <div className="w-11/12 mx-auto my-12 flex flex-1 flex-col rounded-md bg-richblack-800 p-2">
       <div className="space-x-4 font-semibold">
-        {/* Button to switch to the "students" chart */}
         <button
           onClick={() => setCurrChart("students")}
           className={`rounded-sm p-1 px-3 transition-all duration-200 ${
@@ -63,7 +62,6 @@ const InstructorChart = ({courses}) => {
         >
           Students
         </button>
-        {/* Button to switch to the "income" chart */}
         <button
           onClick={() => setCurrChart("income")}
           className={`rounded-sm p-1 px-3 transition-all duration-200 ${
@@ -76,7 +74,6 @@ const InstructorChart = ({courses}) => {
         </button>
       </div>
       <div className="relative mx-auto aspect-square h-full w-full">
-        {/* Render the Pie chart based on the selected chart */}
         <Pie
           data={currChart === "students" ? chartDataStudents : chartIncomeData}
           options={options}

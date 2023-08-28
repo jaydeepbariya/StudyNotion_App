@@ -3,11 +3,18 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import NestedView from "./NestedView";
 import { useDispatch, useSelector } from "react-redux";
-import { setCourse, setEditCourse, setStep } from "../../../../slice/courseSlice";
+import {
+  setCourse,
+  setEditCourse,
+  setStep,
+} from "../../../../slice/courseSlice";
 import { toast } from "react-hot-toast";
-import { createSection, updateSection } from "../../../../services/operations/courseService";
+import {
+  createSection,
+  updateSection,
+} from "../../../../services/operations/courseService";
 import { MdEdit, MdNavigateNext } from "react-icons/md";
-import {IoAddCircleOutline} from 'react-icons/io';
+import { IoAddCircleOutline } from "react-icons/io";
 
 export default function CourseBuilderForm() {
   const {
@@ -15,20 +22,20 @@ export default function CourseBuilderForm() {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm()
+  } = useForm();
 
-  const { course } = useSelector((state) => state.course)
-  const { token } = useSelector((state) => state.auth)
-  const [loading, setLoading] = useState(false)
-  const [editSectionName, setEditSectionName] = useState(null)
-  const dispatch = useDispatch()
+  const { course } = useSelector((state) => state.course);
+  const { token } = useSelector((state) => state.auth);
+  const [loading, setLoading] = useState(false);
+  const [editSectionName, setEditSectionName] = useState(null);
+  const dispatch = useDispatch();
 
   // handle form submission
   const onSubmit = async (data) => {
     // console.log(data)
-    setLoading(true)
+    setLoading(true);
 
-    let result
+    let result;
 
     if (editSectionName) {
       result = await updateSection(
@@ -38,7 +45,7 @@ export default function CourseBuilderForm() {
           courseId: course._id,
         },
         token
-      )
+      );
       // console.log("edit", result)
     } else {
       result = await createSection(
@@ -47,52 +54,52 @@ export default function CourseBuilderForm() {
           courseId: course._id,
         },
         token
-      )
+      );
     }
     if (result) {
       // console.log("section result", result)
-      dispatch(setCourse(result))
-      setEditSectionName(null)
-      setValue("sectionName", "")
+      dispatch(setCourse(result));
+      setEditSectionName(null);
+      setValue("sectionName", "");
     }
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
   const cancelEdit = () => {
-    setEditSectionName(null)
-    setValue("sectionName", "")
-  }
+    setEditSectionName(null);
+    setValue("sectionName", "");
+  };
 
   const handleChangeEditSectionName = (sectionId, sectionName) => {
     if (editSectionName === sectionId) {
-      cancelEdit()
-      return
+      cancelEdit();
+      return;
     }
-    setEditSectionName(sectionId)
-    setValue("sectionName", sectionName)
-  }
+    setEditSectionName(sectionId);
+    setValue("sectionName", sectionName);
+  };
 
   const goToNext = () => {
     if (course.courseContent.length === 0) {
-      toast.error("Please add atleast one section")
-      return
+      toast.error("Please add atleast one section");
+      return;
     }
     if (
       course.courseContent.some((section) => section.subSection.length === 0)
     ) {
-      toast.error("Please add atleast one lecture in each section")
-      return
+      toast.error("Please add atleast one lecture in each section");
+      return;
     }
-    dispatch(setStep(3))
-  }
+    dispatch(setStep(3));
+  };
 
   const goBack = () => {
-    dispatch(setStep(1))
-    dispatch(setEditCourse(true))
-  }
+    dispatch(setStep(1));
+    dispatch(setEditCourse(true));
+  };
 
   return (
-    <div className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6">
+    <div className="w-11/12 mt-12 space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6 mb-12">
       <p className="text-2xl font-semibold text-richblack-5">Course Builder</p>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="flex flex-col space-y-2">
@@ -115,8 +122,9 @@ export default function CourseBuilderForm() {
         <div className="flex items-end gap-x-4">
           <button
             type="submit"
+            className="bg-yellow-50 text-richblack-900 px-2 py-1 rounded-md flex flex-row-reverse gap-x-4"
           >
-            <MdEdit size={20} className="text-yellow-50" />
+            <MdEdit size={20} className="text-richblack-800" />
             {editSectionName ? "Edit Section Name" : "Create Section"}
           </button>
           {editSectionName && (
@@ -141,11 +149,15 @@ export default function CourseBuilderForm() {
         >
           Back
         </button>
-        <button disabled={loading} onClick={goToNext}>
+        <button
+          disabled={loading}
+          onClick={goToNext}
+          className="bg-richblack-50 text-richblack-800 px-2 py-1 rounded-md flex flex-row-reverse items-center gap-x-4"
+        >
           <MdNavigateNext />
           <p>Next</p>
         </button>
       </div>
     </div>
-  )
+  );
 }

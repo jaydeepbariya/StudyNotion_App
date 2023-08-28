@@ -5,7 +5,7 @@ import ReviewSlider from "../components/common/ReviewSlider";
 const About = () => {
   return (
     <div className="w-11/12 mx-auto">
-      <h1 className="text-3xl my-6 font-bold text-blue-300 text-center">
+      <h1 className="text-3xl my-3 font-bold text-blue-300 text-center">
         About Us
       </h1>
       <p className="text-richblack-300 text-center">

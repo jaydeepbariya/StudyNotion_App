@@ -28,8 +28,8 @@ const UpdatePassword = () => {
     }
   
     return (
-      <div className='w-[100%] min-h-screen flex justify-center items-center'>
-          <div className='w-[50%] min-h-[300px] flex flex-col justify-center items-center my-6'>
+      <div className='w-11/12 mx-auto min-h-screen flex justify-center items-center'>
+          <div className='w-[50%] max-md:w-full min-h-[300px] max-h-[600px] flex flex-col justify-center items-center my-6'>
               <p className='font-bold text-2xl font-inter mt-6 mb-3'>Reset Password</p>
               <p className='text-lg font-inter mt-3'>Almost done. Please type your new password and confirm the same.</p>
   

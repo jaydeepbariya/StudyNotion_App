@@ -33,7 +33,7 @@ const CourseTable = ({ courses, setCourses }) => {
     }
 
   return (
-    <div className="w-full mx-auto flex justify-between my-6">
+    <div className="w-11/12 min-h-[400px] mx-auto flex justify-between items-center my-6">
         <Table className="w-full">
             <Tbody>
                 {
@@ -42,7 +42,7 @@ const CourseTable = ({ courses, setCourses }) => {
                     (
                         courses?.map((course)=>{
                             return (
-                                <Tr key={course._id} className="flex justify-between items-center">
+                                <Tr key={course._id} className="w-11/12 flex justify-between items-center">
                                     <Td className="flex my-4">
                                         <img alt="Course Thumbnail" src={course?.thumbnail} className="h-[150px] w-[250px] rounded-lg object-cover m-2" />
                                         <div className="flex flex-col justify-center gap-y-4">
@@ -57,7 +57,7 @@ const CourseTable = ({ courses, setCourses }) => {
 
                                     </Td>
 
-                                    <Td>
+                                    <Td className="max-lg:hidden">
                                         2 Hr 30 Mins
                                     </Td>
 

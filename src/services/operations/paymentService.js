@@ -122,6 +122,8 @@ export const verifyPayment = async (bodyData, token, navigate, dispatch) => {
             Authorization : `Bearer ${token}`
         });
 
+        console.log("payment verification response...", response);
+
         if(!response.data.success){
             throw new Error(response.data.message);
         }

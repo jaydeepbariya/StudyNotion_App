@@ -7,14 +7,14 @@ import {AiOutlineCopyrightCircle, AiFillHeart} from 'react-icons/ai';
 
 const Footer = () => {
   return (
-    <div className='w-[100%] h-[600px] bg-richblack-700'>
+    <div className='w-[100%] min-h-max bg-richblack-700'>
     <div>
-        <div className='mx-auto flex justify-center items-start pt-6'>
-            <div className='flex justify-start items-start'>
-                <div className='flex justify-center items-start gap-x-12'>
-                    <div className='flex flex-col justify-center'>
-                        <img src={footerLogo}/>
-                        <div className='flex flex-col gap-y-4'>
+        <div className='mx-auto flex justify-center items-start pt-6 flex-wrap'>
+            <div className='flex justify-start items-start flex-wrap'>
+                <div className='flex justify-center items-start gap-x-12 flex-wrap'>
+                    <div className='flex flex-col justify-center flex-wrap max-md:items-center'>
+                        <img src={footerLogo} alt='footer logo' />
+                        <div className='flex flex-col gap-y-4 max-md:items-center mb-12'>
                             <p className='my-3 font-semibold'>Company</p>
                             <ul>
                                 <li className='hover:text-richblack-300'><Link to={"/about"}>About</Link></li>
@@ -29,7 +29,7 @@ const Footer = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className='flex flex-col justify-center'>
+                    <div className='flex flex-col justify-center max-md:my-6'>
                         <div className='flex flex-col'>
                         <p className='my-3 font-semibold'>Resources</p>
                         <ul>
@@ -50,7 +50,7 @@ const Footer = () => {
                         </ul>
                         </div>
                     </div>
-                    <div className='flex flex-col justify-center'>
+                    <div className='flex flex-col justify-center max-md:my-6'>
                         <div className='flex flex-col'>
                         <p className='my-3 font-semibold'>Plans</p>
                         <ul>
@@ -70,10 +70,10 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className='w-[1px]  min-h-[500px] bg-richblack-900 mx-12'></div>
+                <div className='w-[1px]  min-h-[500px] bg-richblack-900 mx-12 max-md:hidden'></div>
 
-                <div className='flex justify-center items-start gap-x-12'>
-                    <div className='flex flex-col'>
+                <div className='flex justify-center items-start gap-x-12 flex-wrap max-md:mt-12'>
+                    <div className='flex flex-col max-md:my-6'>
                         <p className='font-semibold'>{FooterLink2[0].title}</p>
                         <ul className='mt-5'>
                             {
@@ -85,7 +85,7 @@ const Footer = () => {
                             }
                         </ul>
                     </div>
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col max-md:my-6'>
                         <p className='font-semibold'>{FooterLink2[1].title}</p>
                         <ul className='mt-5'>
                             {
@@ -97,7 +97,7 @@ const Footer = () => {
                             }
                         </ul>
                     </div>
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col max-md:my-6'>
                         <p className='font-semibold'>{FooterLink2[2].title}</p>
                         <ul className='mt-5'>
                             {

@@ -51,10 +51,10 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit(submitContactForm)}
-      className="w-[300px] min-h-screen flex flex-col justify-center items-center mx-auto"
+      className="w-[350px] min-h-screen flex flex-col justify-center items-center mx-auto"
     >
       <div className="flex flex-col w-full">
-        <div className="flex flex-col my-4">
+        <div className="flex flex-col my-2">
           <label htmlFor="firstName" >
             First Name <sup>*</sup>
           </label>

@@ -44,6 +44,7 @@ export const logout = (navigate)=>{
 }
 
 export const sendOtp = (email, navigate)=>{
+
   return async (dispatch)=>{
     try{
       dispatch(setLoading(true));
@@ -62,6 +63,7 @@ export const sendOtp = (email, navigate)=>{
       navigate("/verify-email");
 
     }catch(error){
+      dispatch(setLoading(false));
       console.log("SEND OTP ERROR....", error.message);
       toast.error("Please Try Again Later");
     }

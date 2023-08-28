@@ -3,15 +3,18 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import signupImg from "../assets/Images/signup.webp";
 import frame from "../assets/Images/frame.png";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sendOtp, sendotp, signup } from "../services/operations/authService";
 import { useNavigate } from "react-router-dom";
-import { addSignupData } from "../slice/authSlice";
+import { addSignupData, setLoading } from "../slice/authSlice";
+import { TailSpin } from "react-loader-spinner";
 
 const Signup = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
 
   const [signupData, setSignupData] = useState({
     firstName: "",
@@ -32,14 +35,17 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+
   const handleChange = (e, field) => {
     setSignupData({ ...signupData, [field]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     dispatch(addSignupData(signupData));
     dispatch(sendOtp(signupData.email, navigate));
+    setLoading(false);
 
   };
 
@@ -53,10 +59,29 @@ const Signup = () => {
     });
   }
 
+  if(loading){
+    return (
+      <div className="w-full min-h-screen flex flex-col justify-center items-center">
+        <TailSpin
+      height="100"
+      width="100"
+      color="#4fa94d"
+      ariaLabel="tail-spin-loading"
+      radius="3"
+      wrapperStyle={{}}
+      wrapperClass=""
+      visible={true}
+    />
+
+    <p>Sending OTP....</p>
+      </div>
+    )
+  }
+
   return (
-    <div className="w-[100%] min-h-screen mx-auto flex justify-center ">
+    <div className="w-11/12 min-h-max mx-auto flex justify-center items-center mb-12">
       <div className="flex flex-col justify-center items-center mx-auto">
-        <div className="w-full mt-6 flex flex-col justify-center">
+        <div className=" mt-6 flex flex-col justify-center items-center">
           <p className="text-4xl font-bold my-5">Welcome Back</p>
           <p className="text-lg text-richblack-400 font-semibold my-5">
             Discover your passion{" "}
@@ -91,7 +116,7 @@ const Signup = () => {
             <div className="flex gap-x-4">
               <div className="flex flex-col my-4">
                 <label htmlFor="firstName" className="mb-3">
-                  First Name <sup className="text-caribbeangreen-500">*</sup>
+                  First Name <sup className="text-red">*</sup>
                 </label>
                 <input
                   type={"text"}
@@ -102,7 +127,7 @@ const Signup = () => {
               </div>
               <div className="flex flex-col my-4">
                 <label htmlFor="lastName" className="mb-3">
-                  Last Name <sup className="text-caribbeangreen-500">*</sup>
+                  Last Name <sup className="text-red">*</sup>
                 </label>
                 <input
                   type={"text"}
@@ -115,7 +140,7 @@ const Signup = () => {
 
             <div className="flex flex-col my-4">
               <label htmlFor="email" className="mb-3">
-                Email <sup className="text-caribbeangreen-500">*</sup>
+                Email <sup className="text-red">*</sup>
               </label>
               <input
                 type={"text"}
@@ -128,7 +153,7 @@ const Signup = () => {
             <div className="flex gap-x-4">
               <div className="flex flex-col my-4 relative">
                 <label htmlFor="password" className="mb-3">
-                  Password <sup className="text-caribbeangreen-500">*</sup>
+                  Password <sup className="text-red">*</sup>
                 </label>
                 <input
                   type={`${showPassword ? "text" : "password"}`}
@@ -148,7 +173,7 @@ const Signup = () => {
               <div className="flex flex-col my-4 relative">
                 <label htmlFor="password" className="mb-3">
                   Confirm Password{" "}
-                  <sup className="text-caribbeangreen-500">*</sup>
+                  <sup className="text-red">*</sup>
                 </label>
                 <input
                   type={`${showConfirmPassword ? "text" : "password"}`}
@@ -176,9 +201,9 @@ const Signup = () => {
         </div>
       </div>
 
-      <div className="w-[50%] relative mt-24">
-        <img src={signupImg} className="absolute top-5 left-5 -z-2" />
-        <img src={frame} />
+      <div className="w-[40%] relative">
+        <img src={signupImg} className="absolute top-5 left-5 -z-2 w-[400px]" alt="signup pic"/>
+        <img src={frame} alt="sign up frame" className="w-[400px]"/>
       </div>
     </div>
   );

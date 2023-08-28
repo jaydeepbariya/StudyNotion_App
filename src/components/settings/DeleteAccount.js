@@ -3,24 +3,45 @@ import { toast } from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { apiConnector } from "../../services/apiConnector";
 import { profile } from "../../services/apis";
+import { useSelector } from "react-redux";
+import { logoutUser } from "../../slice/profileSlice";
+import { logout } from "../../services/operations/authService";
+import { useNavigate } from "react-router-dom";
 
 const DeleteAccount = () => {
+
+  const {token} = useSelector((state)=>state.auth);
+  const navigate = useNavigate();
+
   const deleteMyAccount = async () => {
     try {
-      const response = await apiConnector("DELETE", profile.DELETE_PROFILE_API);
+
+      // eslint-disable-next-line no-restricted-globals
+      let wantDeletion = confirm("Are You Sure ??");
+      
+      console.log(wantDeletion);
+      if(wantDeletion){
+        const response = await apiConnector("DELETE", profile.DELETE_PROFILE_API,{},{Authorization:`Bearer ${token}`});
 
       if (response.data.success) {
-        toast.success(response.data.success);
+        toast.success(response.data.message);
+        logout();
+        navigate("/");
       } else {
         toast.error(response.data.message);
       }
-    } catch (error) {
+    
+      }else{
+        return;
+      }
+
+    }catch (error) {
       console.log("DELETE ACCOUNT ERROR..", error.message);
-    }
+    }  
   };
 
   return (
-    <div className="w-[50%] mx-auto my-12 grid grid-cols-2 gap-6 text-black bg-richblack-600 p-4 rounded-md">
+    <div className="w-11/12 mx-auto my-12 grid grid-cols-2 max-md:grid-cols-1 gap-6 text-black bg-richblack-600 p-4 rounded-md">
       <div className="flex flex-col">
         <div className="w-[50px] h-[50px] flex justify-center items-center rounded-full bg-richblack-800">
           <MdDelete fill="white" size={30}/>

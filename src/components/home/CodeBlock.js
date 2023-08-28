@@ -20,7 +20,7 @@ const CodeBlock = () => {
         <p>13</p>
       </div>
       <TypeAnimation
-        style={{ whiteSpace: "pre-line", height: "200px", display: "block", fontFamily:"monospace", fontSize:"15px" }}
+        style={{ whiteSpace: "pre-line", height: "200px", display: "block", fontFamily:"monospace", fontSize:"1rem" }}
         sequence={[
           `<!DOCTYPE html>
            <html>

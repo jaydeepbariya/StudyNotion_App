@@ -23,7 +23,7 @@ const Catalog = () => {
   },[categoryId]);
 
   return (
-      <div className="w-full min-h-screen">
+      <div className="w-full min-h-screen mb-12">
         <div className="py-12 mx-auto bg-richblack-700">
           <p className="text-md  font-inter ml-12">Home / Catalog / <span className="text-yellow-50">{categoryPageData?.name}</span></p>
           <p className="text-2xl font-semibold font-inter ml-12 my-5">{categoryPageData?.name}</p>
@@ -33,7 +33,7 @@ const Catalog = () => {
         <p className="text-3xl font-semibold my-4 ml-16">Courses to get you started</p>
         <div className="h-[1px] bg-richblack-500 w-11/12 mx-auto"></div>
 
-        <div className="w-11/12 my-12 mx-auto grid grid-cols-3 grid-rows-3 gap-5">
+        <div className="w-11/12 mx-auto grid grid-cols-3 max-md:grid-cols-1 gap-6 my-12">
         
             {
               categoryPageData?.courses?.map((course,index)=>{

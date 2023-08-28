@@ -27,9 +27,9 @@ const Login = () => {
   };
 
   return (
-    <div className="w-[100%] min-h-screen mx-auto flex justify-center ">
-      <div className="flex flex-col justify-start items-center mx-auto mt-24">
-        <div className="w-full mt-6 flex flex-col justify-start">
+    <div className="w-11/12 max-h-[700px] mx-auto flex justify-center items-center gap-x-24 my-12">
+      <div className="flex flex-col justify-start items-center">
+        <div className="mt-6 flex flex-col justify-start">
           <p className="text-4xl font-bold my-5">Welcome Back</p>
           <p className="text-lg text-richblack-400 font-semibold my-5">
             Discover your passion{" "}
@@ -40,7 +40,7 @@ const Login = () => {
           <form onSubmit={handleSubmit} className="flex flex-col">
             <div className="flex flex-col my-4">
               <label htmlFor="email" className="mb-3">
-                Email Address <sup className="text-caribbeangreen-500">*</sup>
+                Email Address <sup className="text-red">*</sup>
               </label>
               <input
                 type={"text"}
@@ -51,7 +51,7 @@ const Login = () => {
             </div>
             <div className="flex flex-col my-4 relative">
               <label htmlFor="password" className="mb-3">
-                Password <sup className="text-caribbeangreen-500">*</sup>
+                Password <sup className="text-red">*</sup>
               </label>
               <input
                 type={`${showPassword ? "text" : "password"}`}
@@ -79,9 +79,9 @@ const Login = () => {
         </div>
       </div>
 
-      <div className="w-[50%] relative mt-24">
-        <img src={loginImg} className="absolute top-5 left-5 -z-2"/>
-        <img src={frame} />
+      <div className="max-md:hidden relative">
+        <img src={loginImg} className="absolute top-5 left-5 -z-2 w-[400px]" alt="img1" />
+        <img src={frame}  alt="img2" className="w-[400px]"/>
       </div>
     </div>
   );

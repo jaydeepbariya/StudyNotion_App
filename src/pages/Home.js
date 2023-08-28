@@ -40,11 +40,11 @@ const Home = () => {
       </div>
 
       <div className="my-16">
-        <img src={boxoffice} alt="Hero Section Image" />
+        <img src={boxoffice} alt="Hero Section" />
       </div>
 
-      <div className="w-11/12 flex justify-center gap-x-12 my-12">
-        <div className="w-[50%] flex flex-col justify-between items-center">
+      <div className="w-11/12 flex justify-center gap-x-12 my-12 max-md:flex-col max-md:w-full">
+        <div className="w-[50%] flex flex-col justify-between items-center max-md:items-start max-md:w-full">
           <p className="text-4xl text-richblack-200 font-semibold">
             Unlock your <GradientText>coding potential</GradientText> with our
             online courses.
@@ -61,13 +61,13 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-[50%]">
+        <div className="w-[50%] max-md:w-full max-md:mt-6">
           <CodeBlock />
         </div>
       </div>
 
-      <div className="w-11/12 flex flex-row-reverse justify-center gap-x-12 my-12">
-        <div className="w-[50%] flex flex-col justify-between items-center">
+      <div className="w-11/12 flex flex-row-reverse justify-center gap-x-12 my-12 max-md:flex-col max-md:w-full">
+        <div className="w-[50%] flex flex-col justify-between items-center max-md:w-full">
           <p className="text-4xl text-richblack-200 font-semibold">
             Start your <GradientText>coding journey</GradientText> with our
             online courses.
@@ -83,7 +83,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-[50%]">
+        <div className="w-[50%] max-md:w-full max-md:mt-6">
           <CodeBlock />
         </div>
       </div>
@@ -99,15 +99,15 @@ const Home = () => {
         <HomeButton active={true} text={"Learn More"} link="/signup" />
       </div>
 
-      <div className="flex justify-around items-center">
-        <div className="w-[40%]">
+      <div className="flex justify-around items-center max-md:flex-col max-md:gap-y-6">
+        <div className="w-[40%] max-md:w-11/12">
           <p className="text-3xl">
             Get the skills you require for a{" "}
             <GradientText>job that is in demand</GradientText>
           </p>
         </div>
 
-        <div className="w-[40%] flex flex-col items-start">
+        <div className="w-[40%] flex flex-col items-start max-md:w-11/12">
           <p className="text-lg my-4">
             The modren studynotion is the pioneer of learning online in best
             class manner. please make use of this beautiful opportunity
@@ -119,8 +119,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="flex gap-x-6 my-12">
-        <div className="w-[40%] flex flex-col justify-center items-start">
+      <div className="flex gap-x-6 my-12 max-md:flex-col max-md:mb-6">
+        <div className="w-[40%] flex flex-col justify-center items-start max-md:w-11/12">
           {timelineFeatures.map((feature, index) => {
             return (
               <div key={index} className="my-4">
@@ -131,23 +131,23 @@ const Home = () => {
           })}
         </div>
 
-        <div className="w-[50%] relative -z-1">
-          <img src={timelineImg} />
+        <div className="w-[50%] relative -z-1 max-md:w-11/12 max-md:mx-auto">
+          <img src={timelineImg} alt="timeline" />
 
-          <div className="w-[70%] min-h-[100px] bg-caribbeangreen-600 flex justify-around items-center absolute -bottom-12 right-20 mb-12">
-            <div className="w-[40%] flex items-center gap-x-3 font-inter">
+          <div className="w-[350px] min-h-[100px] bg-caribbeangreen-600 flex justify-around items-center absolute -bottom-12 right-20 mb-12">
+            <div className="w-[100px] flex items-center gap-x-3 max-md:gap-x-0 font-inter">
               <p className="font-bold text-3xl">10</p>
-              <p className="text-richblack-200 uppercase">years experience</p>
+              <p className="text-richblack-200 uppercase text-sm text-left">years experience</p>
             </div>
-            <div className="w-[40%] flex items-center gap-x-3 font-inter">
+            <div className="w-[100px] flex items-center gap-x-3 max-md:gap-x-0 font-inter">
               <p className="font-bold text-3xl">250</p>
-              <p className="text-richblack-200 uppercase">types of courses</p>
+              <p className="text-richblack-200 uppercase text-sm">types of courses</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="w-11/12 h-[300px] mx-auto flex flex-col text-center">
+      <div className="w-11/12 min-h-[300px] mx-auto flex flex-col text-center mt-12">
         <p className="text-3xl font-semibold mt-8 mb-4">
           Your swiss knife for{" "}
           <GradientText>learning any technology</GradientText>
@@ -156,34 +156,38 @@ const Home = () => {
           Using spin making learning multiple languages easy. with 20+ languages
           realistic voice-over, progress tracking, custom schedule and more.
         </p>
-
-        <div className="flex justify-center my-12 relative">
-          <img src={knowYourProgress} className="absolute left-0" />
-          <img src={compareWithOthers} className="absolute left-[30%]" />
-          <img src={planYourLessons} className="absolute right-0" />
-
-          <HomeButton text={"Learn More"} active={true} link={"/courses"} />
-        </div>
       </div>
 
-      <div className="w-11/12 mt-[500px] mb-12 flex justify-between">
+      <div className="w-11/12 max-h-[400px] flex justify-center items-center max-md:hidden ">
+          <img src={knowYourProgress}  alt="know progress" className="w-[30%] "/>
+          <img src={compareWithOthers}  alt="compare with others" className="w-[30%]" />
+          <img src={planYourLessons}  alt="plan your lessons" className="w-[30%]" />
+        </div>
 
-          <img src={instructorImg} className="w-[40%] shadow-xl shadow-white"/>
+        <HomeButton text={"Learn More"} active={true} link={"/courses"} />
 
-        <div className="w-[40%] flex flex-col justify-around items-center">
-          <p className="text-3xl font-bold">
+
+      <div className="w-11/12 min-h-[400px] my-20 flex justify-between items-center max-md:flex-col max-md:gap-y-6">
+
+          <img src={instructorImg} className="w-[40%] shadow-xl shadow-white max-md:w-full" alt="instructor" />
+
+        <div className="w-[40%] flex flex-col justify-around items-center max-md:w-full">
+          <p className="text-3xl font-bold max-md:mt-12">
             Become an <GradientText>Instructor</GradientText>
           </p>
-          <p className="text-lg">
+          <p className="text-lg max-md:mt-12">
             Instructors from around the world teach millions of students on
             StudyNotion. We provide the tools and skills to teach what you love.
           </p>
 
+          <div className="max-md:my-6">
           <HomeButton
             text={"Become An Instructor"}
             active={true}
             link="/signup"
           />
+          </div>
+
         </div>
       </div>
 

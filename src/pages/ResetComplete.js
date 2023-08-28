@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 
 const ResetComplete = () => {
   return (
-    <div className="w-[100%] min-h-screen flex justify-center items-center">
-      <div className="w-[40%] min-h-[300px] flex flex-col justify-center items-center my-6">
+    <div className="w-11/12 min-h-screen flex justify-center items-center">
+      <div className="w-[40%] max-md:w-full min-h-[300px] max-h-[600px] flex flex-col justify-center items-center my-6">
         <p className="font-bold text-2xl font-inter mt-6 mb-3">
           Resend Complete!
         </p>
-        <p className="text-md font-inter mt-3">
+        <p className="text-md font-inter mt-3 text-center">
         All done! We have sent an email to confirm password change
         </p>
 

@@ -28,12 +28,14 @@ const MyCourse = () => {
 
   return (
     <div className='w-11/12 mx-auto bg-richblack-600 p-4 rounded-md my-6'>
-        <div className='flex justify-between items-center'>
+        <div className='flex justify-between items-start'>
             <p className='text-2xl font-semibold font-inter text-richblack-800'>My Courses</p>
             <button onClick={()=>navigate("/dashboard/add-course")} className='px-2 py-1 rounded-md bg-yellow-50 text-richblack-800 hover:scale-95'>Add Course</button>
         </div>
         
+        <div className='mt-10'>
         <CourseTable courses={courses} setCourses={setCourses}/>
+        </div>
     </div>
   )
 }

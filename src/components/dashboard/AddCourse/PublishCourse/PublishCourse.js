@@ -69,7 +69,7 @@ const PublishCourse = () => {
   }
 
   return (
-    <div className='mt-10 rounded-md border-[1px] bg-richblack-800 p-6 border-richblack-700'>
+    <div className='w-11/12 mt-10 rounded-md border-[1px] bg-richblack-800 p-6 border-richblack-700 mb-12'>
         <p className='text-2xl font-semibold text-center my-6'>Publish Course</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='flex flex-col items-center gap-x-6 my-5'>

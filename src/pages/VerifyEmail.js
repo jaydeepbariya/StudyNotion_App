@@ -12,64 +12,44 @@ const VerifyEmail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {signupData} = useSelector((state)=>state.auth);
-
-  const [loading, setLoading] = useState(false);
+  const { signupData, loading } = useSelector((state) => state.auth);
 
   const registerUser = () => {
-    setLoading(true);
-    dispatch(signup(signupData, otp ,navigate));
-    setLoading(false);
+    dispatch(signup(signupData, otp, navigate));
   };
 
   return (
     <div className="w-[100%] min-h-screen flex justify-center items-center">
-      {loading === true ? (
-        <div>
-          <TailSpin
-            height="80"
-            width="80"
-            color="#4fa94d"
-            ariaLabel="tail-spin-loading"
-            radius="1"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
-        </div>
-      ) : (
-        <div className="w-[50%] min-h-[300px] flex flex-col justify-center items-center my-6">
-          <p className="font-bold text-2xl font-inter mt-6 mb-3">
-            Verify Email
-          </p>
-          <p className="text-lg font-inter mt-3">
-            A verification code has been sent on your email
-          </p>
+      <div className="w-[50%] min-h-[300px] flex justify-center items-center flex-col mt-10">
+        <p className="font-bold text-2xl font-inter mt-6 mb-3">Verify Email</p>
+        <p className="text-lg font-inter mt-3">
+          A verification code has been sent on your email
+        </p>
 
-          <OtpInput
-            value={otp}
-            onChange={setOtp}
-            numInputs={6}
-            renderSeparator={<span> - </span>}
-            renderInput={(props) => <input {...props} className="bg-green-100"/>}
-            shouldAutoFocus={true}
-          />
+        <OtpInput
+          value={otp}
+          onChange={setOtp}
+          numInputs={6}
+          renderSeparator={<span>-</span>}
+          renderInput={(props) => <input {...props} />}
+          containerStyle={{ padding: "20px" }}
+          className="w-[48px] lg:w-[60px] p-4 border-0 bg-richblack-800 rounded-[0.5rem] text-richblack-5 aspect-square text-center focus:border-0 focus:outline-2 focus:outline-yellow-50"
+        />
 
-          <button
-            className="px-3 py-1 rounded-md bg-yellow-400 text-black mt-4 my-2 hover:scale-95 active:shadow-white active:shadow-md"
-            onClick={() => registerUser()}
-          >
-            Register
+        <button
+          className="px-3 py-1 rounded-md bg-yellow-400 text-black mt-4 my-2 hover:scale-95 active:shadow-white active:shadow-md"
+          onClick={() => registerUser()}
+        >
+          Register
+        </button>
+
+        <div className="w-[100%] flex justify-start items-center mt-2">
+          <button className="flex items-center gap-x-3">
+            <BsArrowBarLeft />
+            <Link to={"/login"}>Back To Login</Link>
           </button>
-
-          <div className="w-[100%] flex justify-start items-center mt-2">
-            <button className="flex items-center gap-x-3">
-              <BsArrowBarLeft />
-              <Link to={"/login"}>Back To Login</Link>
-            </button>
-          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

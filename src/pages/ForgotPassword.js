@@ -39,8 +39,8 @@ const ForgotPassword = () => {
       ) : (
         <div>
           {emailSent ? (
-            <div className="w-[100%] min-h-screen flex justify-center items-center">
-              <div className="w-[40%] min-h-[300px] flex flex-col justify-center items-center my-6">
+            <div className="w-11/12 max-h-[500px] mx-auto">
+              <div className="w-[40%] max-md:w-11/12 flex flex-col justify-center items-center my-6 mx-auto">
                 <p className="font-bold text-2xl font-inter mt-6 mb-3">
                   Resend Email
                 </p>
@@ -54,7 +54,7 @@ const ForgotPassword = () => {
                   Resend Email
                 </button>
 
-                <div className="w-[100%] flex justify-start items-center">
+                <div className="w-full flex justify-center items-center">
                   <button className="flex items-center gap-x-3">
                     <BsArrowBarLeft />
                     <Link to={"/login"}>Back To Login</Link>
@@ -63,12 +63,12 @@ const ForgotPassword = () => {
               </div>
             </div>
           ) : (
-            <div className="w-[100%] min-h-screen flex justify-center items-center">
-              <div className="w-[40%] min-h-[300px] flex flex-col justify-center items-center my-6">
+            <div className="w-11/12 min-h-screen flex justify-center items-center">
+              <div className="w-[40%] max-md:w-[70%] min-h-[300px] flex flex-col justify-center items-center my-6">
                 <p className="font-bold text-2xl font-inter mt-6 mb-3">
                   Reset Password
                 </p>
-                <p className="text-md font-inter mt-3">
+                <p className="text-md font-inter mt-3 text-center">
                   Have no fear. We will email you instructions to reset your
                   password. If you dont have access to your email we can try
                   account recovery

@@ -224,12 +224,15 @@ exports.changePassword = async (req,res) => {
         const oldHashedPassword = await bcrypt.hash(oldPassword, 10);
         const newHashedPassword = await bcrypt.hash(newPassword, 10);
 
-        const updatedUser = await User.findOneAndUpdate({password : oldHashedPassword}, {password : newHashedPassword}, {new : true});
+
+        const updatedUser = await User.findOneAndUpdate({_id : req.user.id}, {password : newHashedPassword}, {new : true});
 
         const user = await User.findOne({_id : req.user.id});
 
         const response = mailSender(user.email, "Password Change Successful - StudyNotion",`Password Changed for ${user.firstName} ${user.lastName}`);
 
+        console.log("change password 3");
+ 
         return res.status(200).json({
             success : true,
             message : "Password Change Successful"

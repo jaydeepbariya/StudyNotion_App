@@ -7,14 +7,14 @@ const MyProfile = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-[100%] min-h-screen flex flex-col">
+    <div className="w-full min-h-screen flex flex-col">
       <h1 className="text-2xl my-6 mx-auto">My Profile</h1>
 
-      <div className="relative w-[70%] mx-auto flex justify-center items-center gap-x-12 my-6 bg-richblack-700 p-4 rounded-lg">
-        <div className="flex items-center justify-around gap-4">
+      <div className="relative w-11/12 mx-auto flex justify-center items-center gap-x-12 my-6 bg-richblack-700 p-4 rounded-lg">
+        <div className="flex max-md:flex-col items-center justify-around gap-4">
           <img
             src={user.image}
-            alt={`image-${user.firstName}`}
+            alt={`pic-${user.firstName}`}
             className="aspect-square w-[80px] rounded-full object-cover"
           />
 
@@ -24,7 +24,7 @@ const MyProfile = () => {
           </div>
 
           <div
-            className="absolute top-5 right-5 px-2 py-1 rounded-md bg-yellow-200 text-richblack-900 hover:scale-95 active:shadow-sm active:shadow-white"
+            className="px-2 py-1 rounded-md bg-yellow-200 text-richblack-900 hover:scale-95 active:shadow-sm active:shadow-white"
             onClick={() => navigate("/dashboard/settings")}
           >
             <span>Edit Profile</span>
@@ -32,7 +32,7 @@ const MyProfile = () => {
         </div>
       </div>
 
-      <div className="w-[70%] mx-auto my-6 flex justify-center items-center gap-x-32 bg-richblack-700 p-4 rounded-lg relative">
+      <div className="w-11/12 mx-auto my-6 flex justify-center items-center gap-x-32 bg-richblack-700 p-4 rounded-lg relative">
         <div className="flex flex-col justify-center">
           <p className="font-bold">About</p>
           <p>
@@ -41,17 +41,10 @@ const MyProfile = () => {
               : "Please Enter About Yourself"}
           </p>
         </div>
-
-        <div
-          className="absolute top-5 right-5 px-2 py-1 rounded-md bg-yellow-200 text-richblack-900 hover:scale-95 active:shadow-sm active:shadow-white"
-          onClick={() => navigate("/dashboard/settings")}
-        >
-          <span>Edit Profile</span>
-        </div>
       </div>
 
-      <div className="w-[100%]">
-        <div className="relative w-[70%] mx-auto grid grid-cols-2 grid-rows-3 gap-x-5 gap-y-5 mt-12 bg-richblack-700 p-6 rounded-lg">
+      <div className="w-full mb-12">
+        <div className="relative w-11/12 mx-auto grid grid-cols-2 max-md:grid-cols-1 grid-rows-3 gap-x-5 gap-y-5 mt-12 bg-richblack-700 p-6 rounded-lg">
           
         <div
           className="absolute top-5 right-5 px-2 py-1 rounded-md bg-yellow-200 text-richblack-900 hover:scale-95 active:shadow-sm active:shadow-white"

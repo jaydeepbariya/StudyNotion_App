@@ -30,7 +30,9 @@ const ChangePassword = () => {
   const changeMyPassword = async (e) => {
     console.log("CHANGE PASSWORD DATA...", changePasswordData);
     try{
-      const response = await apiConnector('POST', profile.CHANGE_PASSWORD_API, {...changePasswordData, token});
+      const response = await apiConnector('POST', profile.CHANGE_PASSWORD_API, changePasswordData, {
+        Authorization : `Bearer ${token}`
+      });
       if(response.data.success){
         toast.success(response.data.message);
       }else{
@@ -42,8 +44,8 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="w-[50%] mx-auto my-12 flex flex-col text-black bg-richblack-600 p-4 rounded-md">
-      <div className="w-[60%] flex flex-col gap-x-4 mx-auto">
+    <div className="w-11/12 mx-auto my-12 flex flex-col text-black bg-richblack-600 p-4 rounded-md">
+      <div className="w-full flex flex-col gap-x-4 mx-auto">
         <div className="flex flex-col my-4 relative">
           <label htmlFor="oldPassword" className="mb-3">
             Old Password <sup className="text-caribbeangreen-500">*</sup>

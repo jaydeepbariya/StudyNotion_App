@@ -28,22 +28,20 @@ export default function EnrolledCourses() {
 
   return (
     <div className="w-11/12 min-h-screen flex flex-col items-center">
-      <div className="text-3xl text-richblack-50">Enrolled Courses</div>
+      <div className="text-3xl text-richblack-50 my-12">Enrolled Courses</div>
       {!enrolledCourses ? (
         <div className="grid place-items-center">
           <div className="spinner"></div>
         </div>
       ) : !enrolledCourses.length ? (
-        <p className="grid h-[10vh] w-full place-content-center text-richblack-5">
+        <p className="grid h-[10vh] w-11/12 place-content-center text-richblack-5">
           You have not enrolled in any course yet.
-          {/* TODO: Modify this Empty State */}
         </p>
       ) : (
         <div className="w-full my-8 text-richblack-5">
           {/* Headings */}
           <div className="flex rounded-t-lg bg-richblack-500 ">
             <p className="w-[45%] px-5 py-3">Course Name</p>
-            <p className="w-1/4 px-2 py-3">Duration</p>
             <p className="flex-1 px-2 py-3">Progress</p>
           </div>
           {/* Course Names */}
@@ -55,7 +53,7 @@ export default function EnrolledCourses() {
               key={i}
             >
               <div
-                className="flex w-[45%] cursor-pointer items-center gap-4 px-5 py-3"
+                className="flex w-1/2 cursor-pointer items-center gap-4 px-5 py-3"
                 onClick={() => 
                   navigate(
                     `/view-course/${course?._id}/section/${course?.courseContent[0]?._id}/sub-section/${course?.courseContent[0]?.subSection[0]._id}`
@@ -76,8 +74,7 @@ export default function EnrolledCourses() {
                   </p>
                 </div>
               </div>
-              <div className="w-1/4 px-2 py-3">{course?.totalDuration}</div>
-              <div className="flex w-1/5 flex-col gap-2 px-2 py-3">
+              <div className="flex w-1/2 flex-col gap-2 px-2 py-3">
                 <p>Progress: {course.progressPercentage || 0}%</p>
                 <ProgressBar
                   completed={course.progressPercentage || 0}

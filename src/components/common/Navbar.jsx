@@ -10,6 +10,8 @@ import { useState } from "react";
 import { apiConnector } from "../../services/apiConnector";
 import { categories } from "../../services/apis";
 import { logout } from "../../services/operations/authService";
+import {GiHamburgerMenu} from 'react-icons/gi';
+import {ImCross} from 'react-icons/im';
 
 const Navbar = () => {
   const location = useLocation();
@@ -21,6 +23,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const [subLinks, setSubLinks] = useState([]);
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const getCategories = async () => {
     const response = await apiConnector("GET", categories.CATEGORIES_API);
@@ -35,21 +39,26 @@ const Navbar = () => {
     return matchPath(location.pathname.split("/").at(-1), path);
   };
 
+
+
   return (
-    <div className="flex justify-around h-14 border-b-[1px] border-richblack-500 bg-richblack-800">
-      <div className="w-11/12 flex justify-around items-center">
+    <div className="relative flex justify-around items-center py-3 border-b-[1px] border-richblack-500 bg-richblack-800">
+      <button className="absolute top-5 right-5 hidden max-md:block" onClick={()=>setIsOpen(!isOpen)}>
+        {isOpen ? <ImCross size={25}/> : <GiHamburgerMenu size={30}/>}
+      </button>
+      <div className="w-11/12 flex justify-around items-center max-md:flex-col">
         <Link to={"/"}>
-          <img src={navbarLogo} className="w-[150px] h-[30px]" />
+          <img src={navbarLogo} className="w-[150px] h-[30px]" alt="logonavbar" />
         </Link>
 
-        <ul className="flex items-center justify-center gap-x-6">
+        <ul className={`flex items-center justify-center gap-4 max-md:flex-col max-md:my-6 max-md:${isOpen ? "block" : "hidden"}`}>
           {NavbarLinks.map((navLink, index) => {
             return (
               navLink?.title !== "Catalog" 
               ? 
               (
               <li
-                className={`${
+                className={` ${
                   matchRoute(navLink.path)
                     ? "text-yellow-100"
                     : "text-richblack-200"
@@ -84,13 +93,13 @@ const Navbar = () => {
           })}
         </ul>
 
-        <div className="flex gap-x-4 items-center">
-          {user && user?.accountType !== USER_ROLES.INSTRUCTOR && (
-            <Link to={"/dashboard/cart"} className="relative">
+        <div className={`flex gap-x-4 justify-center items-center max-md:gap-6 max-md:${isOpen ? "block" : "hidden"}`}>
+          {/* {user && user?.accountType !== USER_ROLES.INSTRUCTOR && (
+            <Link to={"/dashboard/cart"}>
               <FaShoppingCart />
               {totalItems > 0 && <span>{totalItems}</span>}
             </Link>
-          )}
+          )} */}
           {token === null && (
             <Link to={"/login"}>
               <button className="bg-richblack-700 px-3 py-1 rounded-md active:shadow-white active:shadow-sm">
@@ -106,8 +115,8 @@ const Navbar = () => {
             </Link>
           )}
           {token !== null && (
-            <div className="flex items-center gap-x-4">
-              <img src={user.image} width={"30px"} height={"30px"} />
+            <div className="flex justify-center items-center gap-6">
+              <img src={user.image} width={"30px"} height={"30px"} alt="user's pic"/>
 
               <Link to={"/dashboard/my-profile"}>
                 <button className="bg-richblack-600 px-3 py-1 rounded-md active:shadow-white active:shadow-sm">

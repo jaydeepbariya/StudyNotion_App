@@ -48,7 +48,7 @@ const UpdateProfile = () => {
   };
 
   return (
-    <form onSubmit={(e)=>updateProfile(e)} className="w-[50%] mx-auto my-12 grid grid-cols-2 gap-6 text-black bg-richblack-600 p-4 rounded-md">
+    <form onSubmit={(e)=>updateProfile(e)} className="w-11/12 mx-auto my-6 grid grid-cols-2 max-md:grid-cols-1 gap-6 text-black bg-richblack-600 p-4 rounded-md">
       <div>
         <label htmlFor="about" className="text-richblack-300">About</label>
         <textarea

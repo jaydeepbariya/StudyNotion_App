@@ -6,7 +6,7 @@ import DeleteAccount from '../settings/DeleteAccount'
 const Settings = () => {
 
     return (
-      <div className="w-[100%] flex flex-col gap-x-12">
+      <div className="w-11/12 flex flex-col gap-12">
         <UpdateProfilePicture />
         <UpdateProfile />
         <ChangePassword />

@@ -51,7 +51,7 @@ exports.capturePayment = async (req, res) => {
     }
   }
 
-  var instance = new Razorpay({ key_id: "rzp_test_rOIxWyv3Ka9Sfq", key_secret: "uqzZhhbrm5ctbT8F9v1wCUt5" });
+  var instance = new Razorpay({ key_id: process.env.RAZORPAY_KEY, key_secret: process.env.RAZORPAY_SECRET});
 
   const options = {
     amount: totalAmount * 100,

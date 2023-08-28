@@ -29,12 +29,12 @@ const RenderSteps = () => {
 
   return (
       <div>
-          <div className='w-[100%] min-w-screen flex flex-col justify-center items-center'>
-          <div className='min-w-[200px] flex justify-between items-center gap-x-5'>
+          <div className='w-11/12 min-w-screen flex flex-col justify-center items-center'>
+          <div className='min-w-[200px] max-w-[600px] flex max-md:flex-col justify-between items-center gap-x-5'>
               {
                   steps.map((item, index) => {
                       return (
-                          <div key={index} className={`min-w-[140px] min-h-[50px] rounded-full ${item.id===step ? "bg-yellow-400 text-richblack-900":"bg-richblack-600 text-richblack-50"} ${step>item.id ? "bg-caribbeangreen-400":""} flex flex-col justify-center items-center`}>
+                          <div key={index} className={`min-w-[140px] min-h-[50px] max-md:my-4 rounded-full ${item.id===step ? "bg-yellow-400 text-richblack-900":"bg-richblack-600 text-richblack-50"} ${step>item.id ? "bg-caribbeangreen-400":""} flex flex-col justify-center items-center`}>
                               <p className='text-sm'>{step>item.id ? <MdOutlineDone />: item.id}</p>
                               <p className='text-sm'>{item.title}</p>
                           </div>

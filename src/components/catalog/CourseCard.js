@@ -4,7 +4,7 @@ import ReactStars from "react-stars";
 
 const CourseCard = ({course,height}) => {
   return (
-    <div className="max-w-[300px] max-h-[500px] bg-richblack-600 flex flex-col items-center rounded-lg">
+    <div className="min-w-[250px] min-h-[250px] max-md:w-11/12 gap-10 bg-richblack-600 flex flex-col items-center flex-wrap rounded-lg">
       <Link to={`/courses/${course._id}`}>
         <div className="flex flex-col items-center">
           <div>
