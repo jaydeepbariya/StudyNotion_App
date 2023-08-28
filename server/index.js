@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin:"https://backend-studynotion-mn3b.onrender.com/api/v1",
+		origin:"https://studynotion-frontend-ho1v2d6dg-jaydeepbariya.vercel.app",
 		credentials:true,
 	})
 )
