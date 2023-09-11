@@ -1,4 +1,4 @@
-const BASE_URL = "https://studynotion-backend-mn3b.onrender.com/api/v1"
+const BASE_URL = "https://studynotion-backend-jxv1.onrender.com/api/v1"
 // const BASE_URL = "http://localhost:4000/api/v1"
 
 export const categories = {
