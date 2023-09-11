@@ -19,10 +19,8 @@ StudyNotion is a Full Stack EdTech Application. It is built using MongoDB, Expre
   - About and Contact page with email facility
     
 ## Work In Progress :
-  - Tracking Course Progress
-  - Responsiveness
-  - Refactoring for Modularity and Reusability
-  - Search Functionality
+  - Edit Course Functionality
+  - Tracking Course Progress Functionality
 
 ## Run Locally :
   - Clone The Repository
