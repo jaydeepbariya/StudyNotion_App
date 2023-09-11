@@ -5,6 +5,8 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 import { getUserEnrolledCourses } from "../../services/operations/profileService"
+import { toast } from "react-hot-toast"
+import { TailSpin } from "react-loader-spinner"
 
 export default function EnrolledCourses() {
   const { token } = useSelector((state) => state.auth)
@@ -23,22 +25,37 @@ export default function EnrolledCourses() {
     }
   };
   useEffect(() => {
+    const toastId = toast.loading("Loading...");
     getEnrolledCourses();
+    toast.dismiss(toastId);
   }, [])
+
+  
 
   return (
     <div className="w-11/12 min-h-screen flex flex-col items-center">
       <div className="text-3xl text-richblack-50 my-12">Enrolled Courses</div>
       {!enrolledCourses ? (
-        <div className="grid place-items-center">
-          <div className="spinner"></div>
+        <div className="min-w-full min-h-screen flex justify-center items-center gap-10">
+          <TailSpin
+            height="100"
+            width="100"
+            color="#4fa94d"
+            ariaLabel="tail-spin-loading"
+            radius="2"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+
+          <p className="text-center">Loading Enrolled Courses...</p>
         </div>
       ) : !enrolledCourses.length ? (
         <p className="grid h-[10vh] w-11/12 place-content-center text-richblack-5">
           You have not enrolled in any course yet.
         </p>
       ) : (
-        <div className="w-full my-8 text-richblack-5">
+        <div className="w-[70%] my-8 text-richblack-5">
           {/* Headings */}
           <div className="flex rounded-t-lg bg-richblack-500 ">
             <p className="w-[45%] px-5 py-3">Course Name</p>
@@ -47,7 +64,7 @@ export default function EnrolledCourses() {
           {/* Course Names */}
           {enrolledCourses.map((course, i, arr) => (
             <div
-              className={`flex items-center border border-richblack-700 ${
+              className={`w-full flex items-center border border-richblack-700 ${
                 i === arr.length - 1 ? "rounded-b-lg" : "rounded-none"
               }`}
               key={i}

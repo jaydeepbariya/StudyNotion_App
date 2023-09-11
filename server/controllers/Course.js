@@ -10,10 +10,8 @@ const { convertSecondsToDuration } = require("../utils/secToDuration")
 // Function to create a new course
 exports.createCourse = async (req, res) => {
   try {
-    // Get user ID from request object
     const userId = req.user.id
 
-    // Get all required fields from request body
     let {
       courseName,
       courseDescription,
@@ -24,17 +22,13 @@ exports.createCourse = async (req, res) => {
       status,
       instructions: _instructions,
     } = req.body
-    // Get thumbnail image from request files
     const thumbnail = req.files.thumbnail
 
-    // Convert the tag and instructions from stringified Array to Array
     const tag = JSON.parse(_tag)
     const instructions = JSON.parse(_instructions)
 
     console.log("tag", tag)
     console.log("instructions", instructions)
-
-    // Check if any of the required fields are missing
     
     console.log(req.body);
     
@@ -118,15 +112,12 @@ exports.createCourse = async (req, res) => {
       },
       { new: true }
     )
-    console.log("HEREEEEEEEE", categoryDetails2)
-    // Return the new course and a success message
     res.status(200).json({
       success: true,
       data: newCourse,
       message: "Course Created Successfully",
     })
   } catch (error) {
-    // Handle any errors that occur during the creation of the course
     console.error(error)
     res.status(500).json({
       success: false,
@@ -146,7 +137,6 @@ exports.editCourse = async (req, res) => {
       return res.status(404).json({ error: "Course not found" })
     }
 
-    // If Thumbnail Image is found, update it
     if (req.files) {
       console.log("thumbnail update")
       const thumbnail = req.files.thumbnailImage
@@ -157,7 +147,6 @@ exports.editCourse = async (req, res) => {
       course.thumbnail = thumbnailImage.secure_url
     }
 
-    // Update only the fields that are present in the request body
     for (const key in updates) {
       if (updates.hasOwnProperty(key)) {
         if (key === "tag" || key === "instructions") {
@@ -187,6 +176,7 @@ exports.editCourse = async (req, res) => {
           path: "subSection"
         },
       })
+      .select("tag")
       .exec()
 
     res.json({

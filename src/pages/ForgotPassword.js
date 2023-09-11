@@ -24,22 +24,24 @@ const ForgotPassword = () => {
   return (
     <div>
       {loading ? (
-        <div>
+        <div className="min-w-full min-h-screen flex justify-center items-center gap-10">
           <TailSpin
-            height="80"
-            width="80"
+            height="100"
+            width="100"
             color="#4fa94d"
             ariaLabel="tail-spin-loading"
-            radius="1"
+            radius="2"
             wrapperStyle={{}}
             wrapperClass=""
             visible={true}
           />
+
+          <p className="text-center">Sending Reset Password Link to Your Email Address..</p>
         </div>
       ) : (
         <div>
           {emailSent ? (
-            <div className="w-11/12 max-h-[500px] mx-auto">
+            <div className="w-11/12 min-h-screen flex justify-center items-center gap-10">
               <div className="w-[40%] max-md:w-11/12 flex flex-col justify-center items-center my-6 mx-auto">
                 <p className="font-bold text-2xl font-inter mt-6 mb-3">
                   Resend Email
@@ -96,7 +98,7 @@ const ForgotPassword = () => {
                 </div>
 
 
-                <div className="w-[100%] flex justify-around items-center">
+                <div className="w-[100%] flex justify-start items-center">
                   <button className="flex items-center gap-x-3">
                     <BsArrowBarLeft />
                     <Link to={"/login"}>Back To Login</Link>

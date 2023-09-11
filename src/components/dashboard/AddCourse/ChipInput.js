@@ -45,7 +45,7 @@ export default function ChipInput({
 
   return (
     <div className="flex flex-col space-y-2">
-      <label className="text-sm text-richblack-5" htmlFor={name}>
+      <label className="text-sm text-richBlack-5" htmlFor={name}>
         {label} <sup className="text-pink-200">*</sup>
       </label>
       <div className="flex w-full flex-wrap gap-y-2">

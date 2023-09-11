@@ -92,18 +92,7 @@ exports.signup = async (req,res) => {
         //find recent OTP
         const recentOTP = await OTP.findOne({email : email}).sort({createdAt:-1}).limit(1);
 
-        console.log("Recent OTP...", recentOTP);
-
-        //validate OTP
-        if(recentOTP.otp.length == 0){
-            return res.status(400).json({
-                success : false,
-                message : "OTP length is 0"
-            });
-        }
-
-
-        if(recentOTP.otp != otp){
+        if(recentOTP?.otp != otp){
             return res.status(400).json({
                 success : false,
                 message : "OTP is Invalid"

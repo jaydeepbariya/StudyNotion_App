@@ -6,6 +6,7 @@ import {auth} from '../apis'
 
 export const login = (loginData, navigate)=>{
   return async (dispatch)=>{
+    const toastId = toast.loading("Logging In...");
     try{
       dispatch(setLoading(true));
 
@@ -26,8 +27,11 @@ export const login = (loginData, navigate)=>{
 
       dispatch(setLoading(false));
 
+      toast.dismiss(toastId);
+
     }catch(error){
       console.log("LOGIN ERROR....", error.message);
+      toast.dismiss(toastId);
       toast.error("Invalid Credentials");
       navigate("/login");
     }
@@ -36,16 +40,19 @@ export const login = (loginData, navigate)=>{
 
 export const logout = (navigate)=>{
   return (dispatch)=>{
+    const toastId = toast.loading("Logging Out...");
     dispatch(setToken(null));
     dispatch(setUser(null));
     toast.success("Logged Out Successfully...");
     navigate("/");
+    toast.dismiss(toastId);
   }
 }
 
 export const sendOtp = (email, navigate)=>{
 
   return async (dispatch)=>{
+    const toastId = toast.loading("Sending OTP...");
     try{
       dispatch(setLoading(true));
       const response = await apiConnector('POST', auth.SENDOTP, {email : email});
@@ -62,9 +69,11 @@ export const sendOtp = (email, navigate)=>{
 
       navigate("/verify-email");
 
+      toast.dismiss(toastId);
     }catch(error){
       dispatch(setLoading(false));
       console.log("SEND OTP ERROR....", error.message);
+      toast.dismiss(toastId);
       toast.error("Please Try Again Later");
     }
   }
@@ -72,10 +81,8 @@ export const sendOtp = (email, navigate)=>{
 
 export const signup = (signupData, otp, navigate)=>{
   return async (dispatch)=>{
+    const toastId = toast.loading("Signing Up...");
     try{
-
-      console.log("OTP...", otp);
-
       const {firstName, lastName, email, password, confirmPassword, accountType} = signupData;
       dispatch(setLoading(true));
       const response = await apiConnector('POST', auth.SIGNUP, {firstName, lastName, email, password, confirmPassword,accountType, otp});
@@ -91,16 +98,19 @@ export const signup = (signupData, otp, navigate)=>{
       navigate('/login');
 
       dispatch(setLoading(false));
+
+      toast.dismiss(toastId);
+
     }catch(error){
       console.log("SIGN UP ERROR....", error.message);
       toast.error("Please Try Again Later");
+      toast.dismiss(toastId);
     }
   }
 }
 
 export const getPasswordResetToken = (email, setEmailSent)=>{
   return async (dispatch)=>{
-    console.log("EMAIL", email);
     try{
       dispatch(setLoading(true));
       const response = await apiConnector('POST', auth.RESET_PASSWORD_TOKEN, {email : email});
@@ -118,7 +128,7 @@ export const getPasswordResetToken = (email, setEmailSent)=>{
       dispatch(setLoading(false));
 
     }catch(error){
-      console.log("SEND RESETPASSWORD TOKEN EMAIL ERROR....", error.message);
+      console.log("SEND RESET PASSWORD TOKEN EMAIL ERROR....", error.message);
       toast.error("Please Try Again Later");
       dispatch(setLoading(false));
     }
@@ -134,8 +144,6 @@ export const resetPassword = (formData, navigate)=>{
 
       const response = await apiConnector('POST', auth.RESET_PASSWORD, {password, confirmPassword, token});
       
-      console.log("RESET PASSWORD RESPONSE...", response);
-
       if(!response.data.success){
         toast.error(response.data.message);
         throw new Error(response.data.message);

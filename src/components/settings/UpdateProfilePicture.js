@@ -21,16 +21,19 @@ const UpdateProfilePicture = () => {
       const formData = new FormData();
       formData.append('displayPicture', image);
       formData.append('token', token);
-  
+      
+      const toastId = toast.loading("Loading...");
       const response = await apiConnector('PUT',profile.UPDATE_DISPLAY_PICTURE, formData);
     
       if(!response.data.success){
         toast.error("File Upload Error");
+        toast.dismiss(toastId);
         return;
       }
   
       dispatch(setNewDisplayPicture(response.data.data.image));
   
+      toast.dismiss(toastId);
       toast.success("Profile Picture Updated...");
   
     }

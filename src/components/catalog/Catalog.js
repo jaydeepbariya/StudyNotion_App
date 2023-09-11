@@ -7,11 +7,13 @@ import CourseCard from "./CourseCard";
 import { useEffect } from "react";
 import {categories} from '../../services/apis';
 import {apiConnector} from '../../services/apiConnector';
+import { TailSpin } from "react-loader-spinner";
 
 const Catalog = () => {
 
   const {categoryId} = useParams();
   const [categoryPageData, setCategoryPageData] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const getCoursesByCategoryId = async () => {
     const response = await apiConnector('GET', categories.COURSES_BY_CATEGORY_ID + categoryId);
@@ -19,8 +21,29 @@ const Catalog = () => {
   }
 
   useEffect(()=>{
+    setLoading(true);
     getCoursesByCategoryId();
+    setLoading(false);
   },[categoryId]);
+
+  if(loading===true){
+    return (
+      <div className="min-w-full min-h-screen flex justify-center items-center gap-10">
+      <TailSpin
+        height="100"
+        width="100"
+        color="#4fa94d"
+        ariaLabel="tail-spin-loading"
+        radius="2"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+      />
+
+      <p className="text-center">Loading Catalog Data...</p>
+    </div>
+    )
+  }
 
   return (
       <div className="w-full min-h-screen mb-12">

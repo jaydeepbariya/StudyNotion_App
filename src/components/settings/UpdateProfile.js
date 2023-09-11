@@ -34,15 +34,18 @@ const UpdateProfile = () => {
 
   const updateProfile = async (e) => {
         e.preventDefault();
-        try{
+        const toastId = toast.loading("Updating Profile...");
+        try{ 
             const response = await apiConnector('PUT', profile.UPDATE_PROFILE_API, {...profileData, token});
             if(response.data.success){
+                toast.dismiss(toastId);
                 toast.success("Profile Update Successful...");
                 dispatch(setUser(response.data.user));
             }else{
                 toast.error(response.data.message);
             }
         }catch(error){
+            toast.dismiss(toastId);
             console.log("Update Profile Error....", error.message);
         }    
   };

@@ -5,6 +5,7 @@ export const sidebarLinks = [
     id: 1,
     name: "My Profile",
     path: "/dashboard/my-profile",
+    type: USER_ROLES.STUDENT,
     icon: "VscAccount",
   },
   {

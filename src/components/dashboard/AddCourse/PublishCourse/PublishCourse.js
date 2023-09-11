@@ -62,6 +62,7 @@ const PublishCourse = () => {
 
   const onSubmit = (data) => {
       handleCoursePublish();
+      document.reload();
   }
 
   const goBack = ()=>{
@@ -69,7 +70,7 @@ const PublishCourse = () => {
   }
 
   return (
-    <div className='w-11/12 mt-10 rounded-md border-[1px] bg-richblack-800 p-6 border-richblack-700 mb-12'>
+    <div className='w-11/12 mt-10 rounded-md border-[1px] bg-richBlack-800 p-6 border-richBlack-700 mb-12'>
         <p className='text-2xl font-semibold text-center my-6'>Publish Course</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='flex flex-col items-center gap-x-6 my-5'>
@@ -87,7 +88,7 @@ const PublishCourse = () => {
               type='button'
               disabled={loading}
               onClick={goBack}
-              className='px-2 py-1 rounded-md bg-richblack-200 text-richblack-900'
+              className='px-2 py-1 rounded-md bg-richBlack-200 text-richBlack-900'
               >
               Back
             </button>
@@ -95,7 +96,7 @@ const PublishCourse = () => {
             <button
               type='submit'
               disabled={loading}
-              className='mt-6 px-2 py-1 rounded-md bg-yellow-50 text-richblack-900'
+              className='mt-6 px-2 py-1 rounded-md bg-yellow-50 text-richBlack-900'
               >
               Save Changes
             </button>

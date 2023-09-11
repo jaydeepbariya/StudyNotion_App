@@ -28,17 +28,21 @@ const ChangePassword = () => {
   };
 
   const changeMyPassword = async (e) => {
-    console.log("CHANGE PASSWORD DATA...", changePasswordData);
+    
+    const toastId = toast.loading("Changing Password...");
     try{
       const response = await apiConnector('POST', profile.CHANGE_PASSWORD_API, changePasswordData, {
         Authorization : `Bearer ${token}`
       });
       if(response.data.success){
+        toast.dismiss(toastId);
         toast.success(response.data.message);
       }else{
+        toast.dismiss(toastId);
         toast.error(response.data.message);
       }
     }catch(error){
+      toast.dismiss(toastId);
       console.log("CHANGE PASSWORD...", error.message);
     }
   };

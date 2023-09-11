@@ -14,18 +14,20 @@ const Dashboard = () => {
 
   if (profileLoading || authLoading) {
     return (
-      <div className="w-[100%] min-h-screen flex justify-center items-center">
-        <TailSpin
-          height="80"
-          width="80"
-          color="#4fa94d"
-          ariaLabel="tail-spin-loading"
-          radius="1"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-        />
-      </div>
+      <div className="min-w-full min-h-screen flex justify-center items-center gap-10">
+      <TailSpin
+        height="100"
+        width="100"
+        color="#4fa94d"
+        ariaLabel="tail-spin-loading"
+        radius="2"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+      />
+
+      <p className="text-center">Loading Dashboard...</p>
+    </div>
     );
   }
 
@@ -35,7 +37,7 @@ const Dashboard = () => {
         {isOpen ? <ImCross size={20}/> : <GiHamburgerMenu size={20}/>}
       </button>
       <div
-        className={`min-w-[10rem] min-h-screen bg-richblack-700 max-md:${isOpen ? "block":"hidden"}`}
+        className={`min-w-[10rem] min-h-screen bg-richBlack-700 max-md:${isOpen ? "block":"hidden"}`}
       >
 
         <Sidebar />

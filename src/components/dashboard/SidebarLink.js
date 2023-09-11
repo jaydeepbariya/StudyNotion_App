@@ -14,15 +14,13 @@ const SidebarLink = ({ link, iconName }) => {
   return (
     <NavLink
       to={link.path}
-      className={`${
+      className={`w-[100%] h-[30px] flex flex-col justify-center items-center ${
         matchRoute(link.path)
-          ? "bg-yellow-400 text-richblack-900"
+          ? "bg-yellow-400 text-richBlack-900"
           : "bg-transparent"
       } px-2 py-1`}
     >
-      <div className="flex gap-x-3">
         <span>{link.name}</span>
-      </div>
     </NavLink>
   );
 };

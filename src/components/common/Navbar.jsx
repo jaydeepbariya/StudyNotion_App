@@ -73,11 +73,11 @@ const Navbar = () => {
                 <p>Catalog</p>
                 <BsArrowDown />
 
-                <div className="min-w-max min-h-min invisible absolute bottom-0 top-[100%] flex flex-col rounded-md bg-richblack-5 p-2 text-richblack-900 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                <div className="min-w-max min-h-min invisible absolute bottom-0 top-[100%] flex flex-col rounded-md bg-richblack-5 p-2 text-richblack-900 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:visible">
                   {subLinks?.map((subLink, index) => {
                     return (
                       <li
-                        className="hover:bg-richblack-300 p-2 rounded-md"
+                        className="p-2 rounded-md"
                         key={index}
                       >
                         <Link to={`/catalog/${subLink._id}`}>

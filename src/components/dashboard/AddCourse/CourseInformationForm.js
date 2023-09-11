@@ -42,9 +42,11 @@ const CourseInformationForm = () => {
       setValue('courseShortDesc', course.courseDescription);
       setValue('coursePrice', course.price);
       setValue('courseTags', course.tag);
+      console.log(course);
       setValue('courseBenefits', course.whatYouWillLearn);
-      setValue('courseCategory', course.category);
+      setValue('courseCategory', course.category._id);
       setValue('courseRequirements', course.instructions);
+      console.log(course.instructions);
       setValue('courseImage', course.thumbnail);
     }
   }
@@ -91,7 +93,7 @@ const CourseInformationForm = () => {
         }
 
         if (currentValues.courseCategory !== course.category._id) {
-          formData.append("category", data.courseCategory);
+          formData.append("category", data.courseCategory.name);
         }
 
         if (currentValues.courseRequirements.toString() !== course.instructions.toString()) {
@@ -99,14 +101,15 @@ const CourseInformationForm = () => {
         }
 
         if (currentValues.courseTags.toString() !== course.tag.toString()) {
-          formData.append("tag", JSON.stringify(data.courseTags));
+          formData.append("tag", );
+          console.log("course tags....", JSON.stringify(data.courseTags));
+
         }
 
         if (currentValues.courseImage !== course.thumbnail) {
           formData.append("thumbnailImage", data.courseImage)
         }
 
-        // Handle Image and Tags as well here
         setLoading(true);
         const response = await editCourseDetails(formData, token);
         setLoading(false);
@@ -149,15 +152,15 @@ const CourseInformationForm = () => {
 
   return (
     <form onSubmit={handleSubmit(submitCourse)}
-      className='w-[60%] rounded-md border-richblack-700 p-6 space-y-8'
+      className='rounded-md border-richBlack-700 p-6 space-y-8'
     >
       <div className='flex flex-col gap-y-3 my-4'>
-        <label htmlfor='courseTitle'>Course title <sup>*</sup></label>
+        <label htmlFor='courseTitle'>Course title <sup>*</sup></label>
         <input 
           id='courseTitle'
           placeholder='Enter Course Title'
           {...register("courseTitle", { required: true })}
-          classname='w-full text-black outline-none border-none focus:shadow-md focus:shadow-richblack-200'
+          className='w-full text-black outline-none border-none focus:shadow-md focus:shadow-richBlack-200'
         />
         {
           errors.courseTitle && (
@@ -167,12 +170,12 @@ const CourseInformationForm = () => {
       </div>
 
       <div className='flex flex-col gap-y-3 my-4'>
-        <label htmlfor='courseShortDesc'>Course Short Description <sup>*</sup></label>
+        <label htmlFor='courseShortDesc'>Course Short Description <sup>*</sup></label>
         <textarea 
           id='courseShortDesc'
           placeholder='Enter Course Description'
           {...register("courseShortDesc", { required: true })}
-          classname='w-full text-black outline-none border-none focus:shadow-md focus:shadow-richblack-200'
+          className='w-full text-black outline-none border-none focus:shadow-md focus:shadow-richBlack-200'
           rows={8}
         />
                 {
@@ -183,13 +186,13 @@ const CourseInformationForm = () => {
       </div>
 
       <div className='flex flex-col gap-y-3 my-4'>
-        <label htmlfor='coursePrice'>Course Price {"(Rs)"} <sup>*</sup></label>
+        <label htmlFor='coursePrice'>Course Price {"(Rs)"} <sup>*</sup></label>
         <input 
           type='number'
           id='coursePrice'
           placeholder='Enter Course Price'
           {...register("coursePrice", { required: true })}
-          classname='w-full text-black outline-none border-none focus:shadow-md focus:shadow-richblack-200'
+          className='w-full text-black outline-none border-none focus:shadow-md focus:shadow-richBlack-200'
         />
                 {
           errors.courseShortDesc && (
@@ -199,11 +202,11 @@ const CourseInformationForm = () => {
       </div>
 
       <div className='flex flex-col gap-y-3 my-4'>
-        <label htmlfor='courseCategory'>Course Category <sup>*</sup></label>
+        <label htmlFor='courseCategory'>Course Category <sup>*</sup></label>
         <select 
           id='courseCategory'
           {...register("courseCategory", { required: true })}
-          classname='w-full text-black outline-none border-none focus:shadow-md focus:shadow-richblack-200'
+          className='w-full text-black outline-none border-none focus:shadow-md focus:shadow-richBlack-200'
         >
           <option value={null} selected={true}>Select Category</option>
           {
@@ -245,12 +248,12 @@ const CourseInformationForm = () => {
       </div>
 
       <div className='flex flex-col gap-y-3 my-4'>
-        <label htmlfor='courseBenefits'>Course Benefits <sup>*</sup></label>
+        <label htmlFor='courseBenefits'>Course Benefits <sup>*</sup></label>
         <textarea 
           id='courseBenefits'
           placeholder='Enter Course Benefits'
           {...register("courseBenefits", { required: true })}
-          classname='w-full text-black outline-none border-none focus:shadow-md focus:shadow-richblack-200'
+          className='w-full text-black outline-none border-none focus:shadow-md focus:shadow-richBlack-200'
           rows={8}
         />
                 {
