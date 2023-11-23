@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css"
 import "swiper/css/free-mode"
 import "swiper/css/pagination"
-import { Autoplay,FreeMode, Navigation, Pagination } from 'swiper';
+import { Autoplay,FreeMode,Pagination } from 'swiper';
 import ReactStars from 'react-stars';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -13,7 +13,6 @@ import { ratingAndReviews } from '../../services/apis';
 const ReviewSlider = () => {
 
     const [reviews, setReviews] = useState([]);
-    const truncateWords = 15;
 
     const getAllReviews = async () => {
         const response = await apiConnector('GET', ratingAndReviews.REVIEWS_DETAILS_API);
@@ -24,7 +23,6 @@ const ReviewSlider = () => {
             setReviews(data?.data);
         }
 
-        console.log("PRINTING REVIEWS", reviews);
     }
 
     useEffect(() => {
@@ -32,20 +30,19 @@ const ReviewSlider = () => {
     }, []);
 
   return (
-    <div className='w-11/12 min-h-[400px] mx-auto mt-6 mb-12'>
+    <div className='w-11/12 h-[400px] mx-auto mt-6 mb-12'>
           <h1 className='text-3xl font-bold text-center'>Reviews From Learners</h1>
           
-          <div className='h-[300px] flex items-center justify-center max-md:flex-col max-w-maxContent'>
+          <div className='h-[300px] flex items-center justify-center my-4 max-md:flex-col max-w-maxContent'>
               <Swiper
-                  slidesPerView={4}
-                  spaceBetween={30}
+                  slidesPerView={3}
+                  spaceBetween={25}
                   loop={true}
                   freeMode={true}
                   autoplay={{
                   delay:2500
                   }}
                   modules={[FreeMode, Pagination, Autoplay]}
-                  className='w-full mx-auto flex justify-center items-center'  
               >
 
                   {

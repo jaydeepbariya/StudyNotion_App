@@ -11,7 +11,6 @@ import knowYourProgress from "../assets/Images/Know_your_progress.png";
 import compareWithOthers from "../assets/Images/Compare_with_others.png";
 import planYourLessons from "../assets/Images/Plan_your_lessons.png";
 import instructorImg from "../assets/Images/Instructor.png";
-import Footer from "../components/common/Footer";
 import ReviewSlider from "../components/common/ReviewSlider";
 
 const Home = () => {
@@ -120,7 +119,7 @@ const Home = () => {
       </div>
 
       <div className="flex gap-x-6 my-12 max-md:flex-col max-md:mb-6">
-        <div className="w-[40%] flex flex-col justify-center items-start max-md:w-11/12">
+        <div className="flex flex-col justify-center items-start gap-12 max-md:w-1/2 max-md:mx-auto">
           {timelineFeatures.map((feature, index) => {
             return (
               <div key={index} className="my-4">
@@ -134,12 +133,12 @@ const Home = () => {
         <div className="w-[50%] relative -z-1 max-md:w-11/12 max-md:mx-auto">
           <img src={timelineImg} alt="timeline" />
 
-          <div className="w-[350px] min-h-[100px] bg-caribbeangreen-600 flex justify-around items-center absolute -bottom-12 right-20 mb-12">
-            <div className="w-[100px] flex items-center gap-x-3 max-md:gap-x-0 font-inter">
+          <div className="w-[300px] min-h-[100px] bg-caribbeangreen-600 flex justify-center items-center gap-12 absolute -bottom-12 right-20 mb-12">
+            <div className="w-[100px] flex justify-center items-center gap-x-3 max-md:gap-x-0 font-inter">
               <p className="font-bold text-3xl">10</p>
               <p className="text-richblack-200 uppercase text-sm text-left">years experience</p>
             </div>
-            <div className="w-[100px] flex items-center gap-x-3 max-md:gap-x-0 font-inter">
+            <div className="w-[100px] flex justify-center items-center gap-x-3 max-md:gap-x-0 font-inter">
               <p className="font-bold text-3xl">250</p>
               <p className="text-richblack-200 uppercase text-sm">types of courses</p>
             </div>
@@ -147,7 +146,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="w-11/12 min-h-[300px] mx-auto flex flex-col text-center mt-12">
+      <div className="w-11/12 mx-auto flex flex-col text-center my-12">
         <p className="text-3xl font-semibold mt-8 mb-4">
           Your swiss knife for{" "}
           <GradientText>learning any technology</GradientText>
@@ -158,8 +157,8 @@ const Home = () => {
         </p>
       </div>
 
-      <div className="w-11/12 max-h-[400px] flex justify-center items-center max-md:hidden ">
-          <img src={knowYourProgress}  alt="know progress" className="w-[30%] "/>
+      <div className="w-11/12 h-[400px] flex justify-center items-center max-md:hidden ">
+          <img src={knowYourProgress}  alt="know progress" className="w-[30%]"/>
           <img src={compareWithOthers}  alt="compare with others" className="w-[30%]" />
           <img src={planYourLessons}  alt="plan your lessons" className="w-[30%]" />
         </div>

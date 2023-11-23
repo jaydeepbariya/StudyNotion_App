@@ -44,7 +44,7 @@ const Navbar = () => {
   return (
     <div className="relative flex justify-around items-center py-3 border-b-[1px] border-richblack-500 bg-richblack-800">
       <button className="absolute top-5 right-5 hidden max-md:block" onClick={()=>setIsOpen(!isOpen)}>
-        {isOpen ? <ImCross size={25}/> : <GiHamburgerMenu size={30}/>}
+        {isOpen ? <ImCross size={25}/> : <GiHamburgerMenu size={25} />}
       </button>
       <div className="w-11/12 flex justify-around items-center max-md:flex-col">
         <Link to={"/"}>
@@ -77,7 +77,7 @@ const Navbar = () => {
                   {subLinks?.map((subLink, index) => {
                     return (
                       <li
-                        className="p-2 rounded-md"
+                        className="p-2 rounded-md hover:bg-richblack-500"
                         key={index}
                       >
                         <Link to={`/catalog/${subLink._id}`}>
@@ -102,14 +102,14 @@ const Navbar = () => {
           )} */}
           {token === null && (
             <Link to={"/login"}>
-              <button className="bg-richblack-700 px-3 py-1 rounded-md active:shadow-white active:shadow-sm">
+              <button className="bg-richblack-700 px-3 py-1 rounded-md outline outline-[2px] outline-caribbeangreen-600 active:outline-white active:outline-[2px]">
                 Login
               </button>
             </Link>
           )}
           {token === null && (
             <Link to={"/signup"}>
-              <button className="bg-richblack-700 px-3 py-1 rounded-md active:shadow-white active:shadow-sm">
+              <button className="bg-richblack-700 px-3 py-1 rounded-md outline outline-[2px] outline-caribbeangreen-500 active:outline-white active:outline-[2px]">
                 Signup
               </button>
             </Link>
