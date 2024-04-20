@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <div className="w-screen min-h-max flex flex-col justify-center items-center gap-12 pt-12 bg-richblack-900">
       <div className="w-11/12 mx-auto grid grid-cols-2 grid-rows-1 max-md:grid-cols-1">
-        <div className="w-full grid grid-cols-3 grid-rows-1 max-sm:grid-cols-1">
+        <div className="w-full grid grid-cols-3 grid-rows-1 max-sm:grid-cols-1 max-sm:mx-auto">
           <div className="w-1/3 max-sm:m-4">
             <p className="font-bold mb-4">Company</p>
             <ul>
@@ -124,7 +124,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="w-full grid grid-cols-3 grid-rows-1 max-sm:grid-cols-1">
+        <div className="w-full grid grid-cols-3 grid-rows-1 max-sm:grid-cols-1 max-sm:mx-auto">
           <div className="w-1/3 max-sm:m-4">
             <p className="font-bold mb-4">{FooterLink2[0].title}</p>
             <ul className="mt-5">

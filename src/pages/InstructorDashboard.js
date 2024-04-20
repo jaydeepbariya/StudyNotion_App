@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { fetchInstructorCourses } from "../services/operations/courseService";
 import { getInstructorData } from "../services/operations/profileService";
-import { TailSpin } from "react-loader-spinner";
-import { course, profile } from "../services/apis";
-import { apiConnector } from "../services/apiConnector";
 import { Link } from "react-router-dom";
 import InstructorChart from "../components/instructorDashboard/InstructorChart";
 
@@ -45,8 +42,10 @@ const InstructorDashboard = () => {
   );
 
   return (
-    <div className="w-11/12 min-h-screen mx-auto flex flex-col justify-center items-center">
-      <div className="space-y-2">
+    <div className="w-full min-h-screen mx-auto p-4 rounded-md my-6">
+      <h1 className="text-3xl my-4 text-left font-bold p-4">Dashboard</h1>
+
+      <div className="w-4/5 mx-auto bg-richblack-400 rounded-md px-4 py-3">
         <h1 className="text-2xl font-bold text-richBlack-5 mt-12">
           Hi {user?.firstName} 👋
         </h1>
@@ -54,11 +53,12 @@ const InstructorDashboard = () => {
           Let's start something new
         </p>
       </div>
+      
       {loading ? (
         <div className="spinner"></div>
       ) : courses.length > 0 ? (
-        <div className="flex max-md:flex-col">
-          <div className="my-4 flex h-[250px] max-lg:flex max-lg:flex-col space-x-4">
+        <div className="w-4/5 mx-auto flex bg-richblack-400 rounded-md max-md:flex-col">
+          <div className="w-full my-4 flex h-[250px] max-lg:flex max-lg:flex-col space-x-4">
             {/* Render chart / graph */}
             {totalAmount > 0 || totalStudents > 0 ? (
               <InstructorChart courses={instructorData} />
@@ -107,7 +107,7 @@ const InstructorDashboard = () => {
           </Link>
         </div>
       )}
-      <div className="rounded-md bg-richBlack-800 p-2">
+      <div className="w-4/5 mx-auto min-h-[300px] rounded-md bg-richBlack-800 p-2">
         <div className="flex items-center justify-between max-lg:flex-col">
           <p className="text-lg font-bold text-richBlack-5">Your Courses</p>
           <Link to="/dashboard/my-courses">

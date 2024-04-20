@@ -1,13 +1,12 @@
-const BASE_URL = "https://studynotion-backend-jxv1.onrender.com/api/v1"
-// const BASE_URL = "http://localhost:4000/api/v1"
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const categories = {
   CATEGORIES_API: BASE_URL + "/course/showAllCategories",
-  COURSES_BY_CATEGORY_ID : BASE_URL + "/course/getCoursesByCategory/"
+  COURSES_BY_CATEGORY_ID: BASE_URL + "/course/getCoursesByCategory/",
 };
 
 export const auth = {
-  SENDOTP: BASE_URL + "/auth/sendotp",
+  SEND_OTP: BASE_URL + "/auth/sendotp",
   SIGNUP: BASE_URL + "/auth/signup",
   LOGIN: BASE_URL + "/auth/login",
   RESET_PASSWORD_TOKEN: BASE_URL + "/auth/reset-password-token",
@@ -24,8 +23,7 @@ export const profile = {
   CHANGE_PASSWORD_API: BASE_URL + "/auth/changepassword",
   DELETE_PROFILE_API: BASE_URL + "/profile/deleteProfile",
   GET_USER_ENROLLED_COURSES_API: BASE_URL + "/profile/getEnrolledCourses",
-  GET_INSTRUCTOR_DATA_API : BASE_URL + "/profile/instructorDashboard"
-
+  GET_INSTRUCTOR_DATA_API: BASE_URL + "/profile/instructorDashboard",
 };
 
 export const user = {
@@ -50,21 +48,19 @@ export const course = {
     BASE_URL + "/course/getFullCourseDetails",
   LECTURE_COMPLETION_API: BASE_URL + "/course/updateCourseProgress",
   CREATE_RATING_API: BASE_URL + "/course/createRating",
-  GET_ALL_RATING : BASE_URL + "/course/getReviews"
-}
+  GET_ALL_RATING: BASE_URL + "/course/getReviews",
+};
 
 export const catalog = {
-  CATALOG_PAGE_DATA : BASE_URL+"/course/getCatagoryPageDetails"
-}
+  CATALOG_PAGE_DATA: BASE_URL + "/course/getCatagoryPageDetails",
+};
 
 export const payment = {
-  COURSE_PAYMENT_API : BASE_URL+"/payment/capturePayment",
-  COURSE_VERIFY_API : BASE_URL + "/payment/verifySignature",
-  PAYMENT_SUCCESS_EMAIL : BASE_URL + "/payment/sendPaymentSuccessEmail",
-}
+  COURSE_PAYMENT_API: BASE_URL + "/payment/capturePayment",
+  COURSE_VERIFY_API: BASE_URL + "/payment/verifySignature",
+  PAYMENT_SUCCESS_EMAIL: BASE_URL + "/payment/sendPaymentSuccessEmail",
+};
 
 export const ratingAndReviews = {
   REVIEWS_DETAILS_API: BASE_URL + "/course/getReviews",
-}
-
-
+};

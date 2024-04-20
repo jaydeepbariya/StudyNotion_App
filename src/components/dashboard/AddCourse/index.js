@@ -1,16 +1,15 @@
-import React from 'react'
-import RenderSteps from './RenderSteps'
+import React from "react";
+import RenderSteps from "./RenderSteps";
 
 const AddCourse = () => {
-    
   return (
-    <div className="w-11/12 min-h-screen flex flex-col gap-x-12">
-        <p className='text-2xl text-richBlack-400 mx-auto my-6'>Add Course</p>
-            <div>
-            <RenderSteps />      
-            </div>
+    <div className="w-full min-h-screen flex flex-col gap-x-12">
+      <h1 className="text-3xl my-4 text-left font-bold p-4">Add Course</h1>
+      <div className="w-4/5 mx-auto">
+        <RenderSteps />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default AddCourse
+export default AddCourse;

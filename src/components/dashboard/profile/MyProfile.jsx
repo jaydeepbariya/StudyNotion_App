@@ -8,10 +8,10 @@ const MyProfile = () => {
 
   return (
     <div className="w-full min-h-screen flex flex-col">
-      <h1 className="text-2xl my-6 mx-auto">My Profile</h1>
+      <h1 className="text-3xl my-4 text-left font-bold p-4">My Profile</h1>
 
-      <div className="relative w-11/12 mx-auto flex justify-center items-center gap-x-12 my-6 bg-richblack-700 p-4 rounded-lg">
-        <div className="flex max-md:flex-col items-center justify-around gap-4">
+      <div className="relative w-3/5 mx-auto flex justify-center items-center gap-x-12 bg-richblack-700 p-4 rounded-lg">
+        <div className="w-full flex max-md:flex-col items-center justify-around gap-4">
           <img
             src={user.image}
             alt={`pic-${user.firstName}`}
@@ -32,7 +32,7 @@ const MyProfile = () => {
         </div>
       </div>
 
-      <div className="w-11/12 mx-auto my-6 flex justify-center items-center gap-x-32 bg-richblack-700 p-4 rounded-lg relative">
+      <div className="w-3/5 mx-auto my-6 flex justify-center items-center gap-x-32 bg-richblack-700 p-4 rounded-lg relative">
         <div className="flex flex-col justify-center">
           <p className="font-bold">About</p>
           <p>
@@ -43,8 +43,8 @@ const MyProfile = () => {
         </div>
       </div>
 
-      <div className="w-full mb-12">
-        <div className="relative w-11/12 mx-auto grid grid-cols-2 max-md:grid-cols-1 grid-rows-3 gap-x-5 gap-y-5 mt-12 bg-richblack-700 p-6 rounded-lg">
+      <div className="w-3/5 mx-auto mb-12">
+        <div className="relative w-full mx-auto grid grid-cols-2 max-md:grid-cols-1 grid-rows-3 gap-x-5 gap-y-5 mt-12 bg-richblack-700 p-6 rounded-lg">
           
         <div
           className="absolute top-5 right-5 px-2 py-1 rounded-md bg-yellow-200 text-richblack-900 hover:scale-95 active:shadow-sm active:shadow-white"

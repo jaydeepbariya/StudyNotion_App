@@ -41,9 +41,9 @@ const DeleteAccount = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto my-12 grid grid-cols-2 max-md:grid-cols-1 gap-6 text-black bg-richblack-600 p-4 rounded-md">
-      <div className="flex flex-col">
-        <div className="w-[50px] h-[50px] flex justify-center items-center rounded-full bg-richblack-800">
+    <div className="w-full mx-auto my-12 grid grid-cols-2 max-md:grid-cols-1 gap-6 text-black bg-richblack-600 p-4 rounded-md">
+      <div className="w-full flex flex-col">
+        <div className="w-[50px] h-[50px] flex justify-center items-center rounded-full bg-richblack-800 my-4 mx-2">
           <MdDelete fill="white" size={30}/>
         </div>
 
