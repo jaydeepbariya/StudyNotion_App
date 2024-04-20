@@ -4,7 +4,7 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { BsArrowBarLeft } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { resetPassword } from '../services/operations/authService';
+import { resetPassword } from '../../services/operations/authService';
 const UpdatePassword = () => {
     const params = useParams();
     const navigate = useNavigate();

@@ -2,12 +2,14 @@ import React from "react";
 import { TailSpin } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { sidebarLinks } from "../../data/dashboard-links";
-import { logout } from "../../services/operations/authService";
+import { sidebarLinks } from "../../../data/dashboard-links";
+import { logout } from "../../../services/operations/authService";
 import SidebarLink from "./SidebarLink";
 
 const Sidebar = () => {
-  const { user, loading: profileLoading } = useSelector((state) => state.profile);
+  const { user, loading: profileLoading } = useSelector(
+    (state) => state.profile
+  );
   const { loading: authLoading } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ const Sidebar = () => {
 
   if (profileLoading || authLoading) {
     return (
-      <div className="w-[100vw] min-h-screen flex justify-center items-center">
+      <div className="w-[100vw] min-h-full flex justify-center items-center">
         <TailSpin
           height="80"
           width="80"
@@ -31,16 +33,20 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="flex flex-col gap-y-4 mt-12">
-      {sidebarLinks.map((link, index) => {
-        return (
-          <div key={index}>
-            {link.type == user.accountType ? <SidebarLink link={link} iconName={link.icon}/> : null}
-          </div>
-        );
-      })}
+    <div className="flex flex-col gap-y-2">
+      <div className="mt-4">
+        {sidebarLinks.map((link, index) => {
+          return (
+            <div key={index}>
+              {( link.type === user.accountType || link.type === null ) ? (
+                <SidebarLink link={link} />
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
 
-      <div className="h-[1px] bg-richblack-400 w-[80%] mx-auto my-6"></div>
+      <div className="h-[2px] bg-richblack-600 w-[80%] mx-auto my-4"></div>
 
       <SidebarLink
         link={{
@@ -52,7 +58,7 @@ const Sidebar = () => {
 
       <button
         onClick={() => dispatch(logout(navigate))}
-        className="text-center bg-richblack-400 ml-2 cursor-pointer"
+        className="my-6 w-[80%] mx-auto px-4 py-2 rounded-md text-center bg-richblack-400  hover:outline hover:outline-white hover:outline-[2px] transition-all duration-200"
       >
         Log Out
       </button>

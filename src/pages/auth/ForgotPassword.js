@@ -3,8 +3,8 @@ import { BsArrowBarLeft } from "react-icons/bs";
 import { TailSpin } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getPasswordResetToken } from "../services/operations/authService";
-import { setLoading } from "../slice/authSlice";
+import { getPasswordResetToken } from "../../services/operations/authService";
+import { setLoading } from "../../slice/authSlice";
 
 const ForgotPassword = () => {
 

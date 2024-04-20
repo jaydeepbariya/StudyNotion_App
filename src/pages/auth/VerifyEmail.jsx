@@ -4,15 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import OtpInput from "react-otp-input";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TailSpin } from "react-loader-spinner";
-import { signup } from "../services/operations/authService";
+import { signup } from "../../services/operations/authService";
 
 const VerifyEmail = () => {
   const [otp, setOtp] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { signupData, loading } = useSelector((state) => state.auth);
+  const { signupData } = useSelector((state) => state.auth);
 
   const registerUser = () => {
     dispatch(signup(signupData, otp, navigate));

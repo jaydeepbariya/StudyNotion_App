@@ -11,7 +11,7 @@ const ChangePassword = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const {token} = useSelector((state)=>state.auth);
+  const { token } = useSelector((state) => state.auth);
 
   const [changePasswordData, setChangePasswordData] = useState({
     oldPassword: "",
@@ -28,28 +28,32 @@ const ChangePassword = () => {
   };
 
   const changeMyPassword = async (e) => {
-    
     const toastId = toast.loading("Changing Password...");
-    try{
-      const response = await apiConnector('POST', profile.CHANGE_PASSWORD_API, changePasswordData, {
-        Authorization : `Bearer ${token}`
-      });
-      if(response.data.success){
+    try {
+      const response = await apiConnector(
+        "POST",
+        profile.CHANGE_PASSWORD_API,
+        changePasswordData,
+        {
+          Authorization: `Bearer ${token}`,
+        }
+      );
+      if (response.data.success) {
         toast.dismiss(toastId);
         toast.success(response.data.message);
-      }else{
+      } else {
         toast.dismiss(toastId);
         toast.error(response.data.message);
       }
-    }catch(error){
+    } catch (error) {
       toast.dismiss(toastId);
       console.log("CHANGE PASSWORD...", error.message);
     }
   };
 
   return (
-    <div className="w-11/12 mx-auto my-12 flex flex-col text-black bg-richblack-600 p-4 rounded-md">
-      <div className="w-full flex flex-col gap-x-4 mx-auto">
+    <div className="w-full mx-auto my-12 flex flex-col text-black bg-richblack-600 p-4 rounded-md">
+      <div className="w-[40%] mx-auto flex flex-col gap-x-4">
         <div className="flex flex-col my-4 relative">
           <label htmlFor="oldPassword" className="mb-3">
             Old Password <sup className="text-caribbeangreen-500">*</sup>
@@ -89,7 +93,8 @@ const ChangePassword = () => {
         </div>
         <div className="flex flex-col my-4 relative">
           <label htmlFor="newConfirmPassword" className="mb-3">
-            Confirm New Password <sup className="text-caribbeangreen-500">*</sup>
+            Confirm New Password{" "}
+            <sup className="text-caribbeangreen-500">*</sup>
           </label>
           <input
             type={`${showConfirmNewPassword ? "text" : "password"}`}
@@ -108,7 +113,7 @@ const ChangePassword = () => {
       </div>
 
       <button
-        className="px-3 py-1 rounded-md bg-yellow-400 text-black mt-4 my-2 hover:scale-95 active:shadow-white active:shadow-md"
+        className="w-[40%] mx-auto px-3 py-1 rounded-md bg-yellow-400 text-black mt-4 my-2 hover:scale-95 active:shadow-white active:shadow-md"
         onClick={() => changeMyPassword()}
       >
         Reset Password

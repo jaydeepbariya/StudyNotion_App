@@ -10,8 +10,8 @@ import { useState } from "react";
 import { apiConnector } from "../../services/apiConnector";
 import { categories } from "../../services/apis";
 import { logout } from "../../services/operations/authService";
-import {GiHamburgerMenu} from 'react-icons/gi';
-import {ImCross} from 'react-icons/im';
+import { GiHamburgerMenu } from "react-icons/gi";
+import { ImCross } from "react-icons/im";
 
 const Navbar = () => {
   const location = useLocation();
@@ -39,25 +39,32 @@ const Navbar = () => {
     return matchPath(location.pathname.split("/").at(-1), path);
   };
 
-
-
   return (
     <div className="relative flex justify-around items-center py-3 border-b-[1px] border-richblack-500 bg-richblack-800">
-      <button className="absolute top-5 right-5 hidden max-md:block" onClick={()=>setIsOpen(!isOpen)}>
-        {isOpen ? <ImCross size={25}/> : <GiHamburgerMenu size={25} />}
+      <button
+        className="absolute top-5 right-5 hidden max-md:block"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? <ImCross size={25} /> : <GiHamburgerMenu size={25} />}
       </button>
       <div className="w-11/12 flex justify-around items-center max-md:flex-col">
         <Link to={"/"}>
-          <img src={navbarLogo} className="w-[150px] h-[30px]" alt="logonavbar" />
+          <img
+            src={navbarLogo}
+            className="w-[150px] h-[30px]"
+            alt="logo navbar"
+          />
         </Link>
 
-        <ul className={`flex items-center justify-center gap-4 max-md:flex-col max-md:my-6 max-md:${isOpen ? "block" : "hidden"}`}>
+        <ul
+          className={`flex items-center justify-center gap-4 max-md:flex-col max-md:my-6 max-md:${
+            isOpen ? "block" : "hidden"
+          }`}
+        >
           {NavbarLinks.map((navLink, index) => {
-            return (
-              navLink?.title !== "Catalog" 
-              ? 
-              (
+            return navLink?.title !== "Catalog" ? (
               <li
+                key={index}
                 className={` ${
                   matchRoute(navLink.path)
                     ? "text-yellow-100"
@@ -66,9 +73,7 @@ const Navbar = () => {
               >
                 <Link to={navLink.path}>{navLink.title}</Link>
               </li>
-              ) 
-              : 
-              (
+            ) : (
               <div className="group flex items-center gap-x-2 cursor-pointer relative">
                 <p>Catalog</p>
                 <BsArrowDown />
@@ -88,35 +93,46 @@ const Navbar = () => {
                   })}
                 </div>
               </div>
-            )
-            )
+            );
           })}
         </ul>
 
-        <div className={`flex gap-x-4 justify-center items-center max-md:gap-6 max-md:${isOpen ? "block" : "hidden"}`}>
-          {/* {user && user?.accountType !== USER_ROLES.INSTRUCTOR && (
+        {/* Buttons on Navbar */}
+        <div
+          className={`flex gap-x-4 justify-center items-center max-md:gap-6 max-md:${
+            isOpen ? "block" : "hidden"
+          }`}
+        >
+          {user && user?.accountType !== USER_ROLES.INSTRUCTOR && (
             <Link to={"/dashboard/cart"}>
               <FaShoppingCart />
               {totalItems > 0 && <span>{totalItems}</span>}
             </Link>
-          )} */}
+          )}
           {token === null && (
             <Link to={"/login"}>
-              <button className="bg-richblack-700 px-3 py-1 rounded-md outline outline-[2px] outline-caribbeangreen-600 active:outline-white active:outline-[2px]">
+              <button className="bg-richblack-700 px-3 py-1 rounded-md outline outline-[2px] outline-caribbeangreen-300 active:outline-white active:outline-[2px] hover:outline-white transition-all duration-200">
                 Login
               </button>
             </Link>
           )}
           {token === null && (
             <Link to={"/signup"}>
-              <button className="bg-richblack-700 px-3 py-1 rounded-md outline outline-[2px] outline-caribbeangreen-500 active:outline-white active:outline-[2px]">
+              <button className="bg-richblack-700 px-3 py-1 rounded-md outline outline-[2px] outline-caribbeangreen-300 active:outline-white active:outline-[2px] hover:outline-white transition-all duration-200">
                 Signup
               </button>
             </Link>
           )}
           {token !== null && (
             <div className="flex justify-center items-center gap-6">
-              <img src={user.image} width={"30px"} height={"30px"} alt="user's pic"/>
+              <Link to={"/dashboard/my-profile"}>
+                <img
+                  src={user.image}
+                  width={"30px"}
+                  height={"30px"}
+                  alt="user's pic"
+                />
+              </Link>
 
               <Link to={"/dashboard/my-profile"}>
                 <button className="bg-richblack-600 px-3 py-1 rounded-md active:shadow-white active:shadow-sm">
