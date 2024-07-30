@@ -15,7 +15,7 @@ const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
 
 dotenv.config();
-const PORT = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
@@ -48,16 +48,8 @@ app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/contact", contactRoutes);
 
 
-//def route
 
-app.get("/", (req, res) => {
-	return res.json({
-		success:true,
-		message:'Your server is up and running....'
-	});
+app.listen(port, () => {
+	console.log(`Server is running at ${port}`);
 });
-
-app.listen(PORT, () => {
-	console.log(`App is running at ${PORT}`)
-})
 

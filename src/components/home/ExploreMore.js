@@ -27,6 +27,7 @@ const ExploreMore = () => {
         {HomePageExplore.map((tag, index) => {
           return (
             <li
+              key={index}
               className={`${
                 tag.tag === category
                   ? "bg-richblack-700 text-white"

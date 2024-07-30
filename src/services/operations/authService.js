@@ -1,6 +1,6 @@
 import { toast } from "react-hot-toast";
-import { setLoading, setToken } from "../../slice/authSlice";
-import { setUser } from "../../slice/profileSlice";
+import { setLoading, setToken } from "../../reducer/slice/authSlice";
+import { setUser } from "../../reducer/slice/profileSlice";
 import { apiConnector } from "../apiConnector";
 import { auth } from "../apis";
 
@@ -56,6 +56,8 @@ export const sendOtp = (email, navigate) => {
       const response = await apiConnector("POST", auth.SEND_OTP, {
         email: email,
       });
+
+      console.log("otp response", response);
 
       if (!response.data.success) {
         toast.error(response.data.message);

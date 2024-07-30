@@ -39,7 +39,7 @@ const Signup = () => {
 
   if (loading) {
     return (
-      <div className="w-full min-h-screen flex flex-col justify-center items-center">
+      <div className="w-full min-h-max flex flex-col justify-center items-center">
         <TailSpin
           height="100"
           width="100"
@@ -57,10 +57,10 @@ const Signup = () => {
   }
 
   return (
-    <div className="w-11/12 min-h-max mx-auto flex justify-center items-center mb-12">
+    <div className="w-11/12 min-h-max mx-auto flex justify-center items-center mb-8">
       <div className="flex flex-col justify-center items-center mx-auto">
         <div className=" mt-6 flex flex-col justify-center items-center">
-          <p className="text-4xl font-bold my-5">Welcome Back</p>
+          <p className="text-4xl font-bold mb-5">Welcome Back</p>
           <p className="text-lg text-richblack-400 font-semibold my-5">
             Discover your passion{" "}
             <span className="italic font-edu-sa text-blue-400">

@@ -7,8 +7,8 @@ const Loading = () => {
       <ReactLoading
         type={"spin"}
         color={"#4A90E2"}
-        height={"64px"}
-        width={"64px"}
+        height={"90px"}
+        width={"90px"}
       />
     </div>
   );

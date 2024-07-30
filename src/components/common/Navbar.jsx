@@ -74,7 +74,7 @@ const Navbar = () => {
                 <Link to={navLink.path}>{navLink.title}</Link>
               </li>
             ) : (
-              <div className="group flex items-center gap-x-2 cursor-pointer relative">
+              <div className="group flex items-center gap-x-2 cursor-pointer relative" key={index}>
                 <p>Catalog</p>
                 <BsArrowDown />
 

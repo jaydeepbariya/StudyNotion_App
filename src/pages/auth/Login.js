@@ -25,7 +25,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-11/12 max-h-[700px] mx-auto flex justify-center items-center gap-x-24 my-14">
+    <div className="w-11/12 max-h-max mx-auto flex justify-center items-center gap-x-24 my-14">
       <div className="flex flex-col justify-start items-center">
         <div className="mt-6 flex flex-col justify-start">
           <p className="text-4xl font-bold my-5">Welcome Back</p>
